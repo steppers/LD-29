@@ -1,0 +1,26 @@
+<component name="libraryTable">
+  <library name="lib">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/Slick2D/lib/jogg-0.0.7.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/Slick2D/lib/lwjgl_util.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/Slick2D/lib/slick.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/Slick2D/lib/jinput.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/Slick2D/lib/jorbis-0.0.15.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/Slick2D/lib/lwjgl.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/Slick2D/lib/lwjgl_util_applet.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/Slick2D/lib/ibxm.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/Slick2D/lib/AppleJavaExtensions.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/Slick2D/lib/asm-debug-all.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/Slick2D/lib/jnlp.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/Slick2D/lib/lwjgl-debug.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/Slick2D/lib/lwjgl_test.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/Slick2D/lib/lzma.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/Slick2D/lib/slick-examples.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/Slick2D/lib/tinylinepp.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="file://$PROJECT_DIR$/lib/Slick2D/javadoc" />
+    </JAVADOC>
+    <SOURCES />
+  </library>
+</component>
