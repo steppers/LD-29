@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="43026df8-6e1a-4247-88bc-b4fec99e6a92" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-    </list>
+    <list default="true" id="43026df8-6e1a-4247-88bc-b4fec99e6a92" name="Default" comment="" />
     <ignored path="LUDUMDARE.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -70,7 +67,7 @@
       <file leaf-file-name="Game.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Core/Game.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="16" column="44" selection-start="325" selection-end="325" vertical-scroll-proportion="0.36842105" vertical-offset="38" max-vertical-offset="833">
+            <state line="11" column="0" selection-start="149" selection-end="178" vertical-scroll-proportion="0.22410867" vertical-offset="38" max-vertical-offset="833">
               <folding />
             </state>
           </provider>
@@ -397,7 +394,11 @@
       <created>1398413616908</created>
       <updated>1398413616908</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Preparation">
+      <created>1398413826015</created>
+      <updated>1398413826015</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -442,7 +443,8 @@
       <TodoPanelSettings />
     </option>
     <MESSAGE value="Test Commit in Intellij :)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Test Commit in Intellij :)" />
+    <MESSAGE value="Preparation" />
+    <option name="LAST_COMMIT_MESSAGE" value="Preparation" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -485,7 +487,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Core/Game.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="44" selection-start="325" selection-end="325" vertical-scroll-proportion="0.36842105" vertical-offset="38" max-vertical-offset="833">
+        <state line="11" column="0" selection-start="149" selection-end="178" vertical-scroll-proportion="0.22410867" vertical-offset="38" max-vertical-offset="833">
           <folding />
         </state>
       </provider>
