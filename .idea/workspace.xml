@@ -6,11 +6,7 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="43026df8-6e1a-4247-88bc-b4fec99e6a92" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Core/Game.java" afterPath="$PROJECT_DIR$/src/Core/Game.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/artifacts/LD_29_jar.xml" afterPath="$PROJECT_DIR$/.idea/artifacts/LD_29_jar.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-    </list>
+    <list default="true" id="43026df8-6e1a-4247-88bc-b4fec99e6a92" name="Default" comment="" />
     <ignored path="LUDUMDARE.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -76,7 +72,7 @@
       <file leaf-file-name="Game.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Core/Game.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="23" column="21" selection-start="466" selection-end="466" vertical-scroll-proportion="0.5796703" vertical-offset="180" max-vertical-offset="867">
+            <state line="21" column="4" selection-start="425" selection-end="425" vertical-scroll-proportion="0.48626372" vertical-offset="180" max-vertical-offset="867">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -456,7 +452,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -570,7 +566,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Core/Game.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="21" selection-start="466" selection-end="466" vertical-scroll-proportion="0.5796703" vertical-offset="180" max-vertical-offset="867">
+        <state line="21" column="4" selection-start="425" selection-end="425" vertical-scroll-proportion="0.48626372" vertical-offset="180" max-vertical-offset="867">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
