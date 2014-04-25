@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/LUDUMDARE-Practice.iml" filepath="$PROJECT_DIR$/LUDUMDARE-Practice.iml" />
+      <module fileurl="file://$PROJECT_DIR$/LD-29.iml" filepath="$PROJECT_DIR$/LD-29.iml" />
       <module fileurl="file://$PROJECT_DIR$/lib/Slick2D/Slick2D.iml" filepath="$PROJECT_DIR$/lib/Slick2D/Slick2D.iml" />
       <module fileurl="file://$PROJECT_DIR$/lib/lwjgl-2.9.0/src/lwjgl-2.9.0.iml" filepath="$PROJECT_DIR$/lib/lwjgl-2.9.0/src/lwjgl-2.9.0.iml" />
     </modules>
