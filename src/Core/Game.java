@@ -1,5 +1,6 @@
 package Core;
 
+import org.lwjgl.opengl.Display;
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.*;
 
@@ -19,7 +20,7 @@ public class Game extends StateBasedGame
     
     static final int menu = 0;
     
-    public Game(String title){
+    public Game(){
         super(title);
     }
 
@@ -34,7 +35,7 @@ public class Game extends StateBasedGame
      */
     public static void main(String[] args) throws SlickException
     {
-        AppGameContainer app = new AppGameContainer(new Game(title));
+        AppGameContainer app = new AppGameContainer(new Game());
         app.setDisplayMode(width, height, fullscreen);
         app.setSmoothDeltas(showFPS);
         app.setTargetFrameRate(fpsLimit);
