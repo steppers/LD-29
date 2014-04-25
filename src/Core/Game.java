@@ -14,7 +14,7 @@ public class Game extends StateBasedGame
     static int width = 640;
     static boolean fullscreen = false;
     static boolean showFPS = true;
-    static final String title = "Test Commit";
+    static final String title = "LD-29";
     static int fpsLimit = 60;
     
     static final int menu = 0;
