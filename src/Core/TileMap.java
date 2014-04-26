@@ -17,7 +17,8 @@ public class TileMap {
         DIRT,
         STONE,
         WOOD,
-        DOOR,
+        DOOR_STONE,
+        DOOR_STONE_OPEN,
         FLOOR_STONE,
         FLOOR_WATER,
         FLOOR_WOOD,
@@ -37,6 +38,7 @@ public class TileMap {
     private void InitTextureAtlas() {
         try{
             textures = new Image("res/tex/tiles.png");
+            textures.setFilter(Image.FILTER_NEAREST);
         }catch(SlickException e){
             System.err.println("Error: Cannot load tiles.png");
             e.printStackTrace();
@@ -49,8 +51,26 @@ public class TileMap {
                 switch(tiles[x][y]){
                     case EMPTY:
                         break;
+                    case STONE:
+                        g.drawImage(textures, (x*resolution*scale)+xOffset, (y*resolution*scale)+yOffset, (x*resolution*scale)+xOffset+resolution*scale, (y*resolution*scale)+yOffset+resolution*scale, 0, 0, resolution, resolution);
+                        break;
                     case DIRT:
-                        textures.draw();
+                        g.drawImage(textures, (x*resolution*scale)+xOffset, (y*resolution*scale)+yOffset, (x*resolution*scale)+xOffset+resolution*scale, (y*resolution*scale)+yOffset+resolution*scale, resolution, 0, resolution+resolution, resolution);
+                        break;
+                    case WOOD:
+                        g.drawImage(textures, (x*resolution*scale)+xOffset, (y*resolution*scale)+yOffset, (x*resolution*scale)+xOffset+resolution*scale, (y*resolution*scale)+yOffset+resolution*scale, resolution*2, 0, resolution+resolution*2, resolution);
+                        break;
+                    case DOOR_STONE:
+                        g.drawImage(textures, (x*resolution*scale)+xOffset, (y*resolution*scale)+yOffset, (x*resolution*scale)+xOffset+resolution*scale, (y*resolution*scale)+yOffset+resolution*scale, resolution*3, 0, resolution+resolution*3, resolution);
+                        break;
+                    case DOOR_STONE_OPEN:
+                        g.drawImage(textures, (x*resolution*scale)+xOffset, (y*resolution*scale)+yOffset, (x*resolution*scale)+xOffset+resolution*scale, (y*resolution*scale)+yOffset+resolution*scale, resolution*4, 0, resolution+resolution*4, resolution);
+                        break;
+                    case FLOOR_STONE:
+                        g.drawImage(textures, (x*resolution*scale)+xOffset, (y*resolution*scale)+yOffset, (x*resolution*scale)+xOffset+resolution*scale, (y*resolution*scale)+yOffset+resolution*scale, resolution*5, 0, resolution+resolution*5, resolution);
+                        break;
+                    case FLOOR_WATER:
+                        g.drawImage(textures, (x*resolution*scale)+xOffset, (y*resolution*scale)+yOffset, (x*resolution*scale)+xOffset+resolution*scale, (y*resolution*scale)+yOffset+resolution*scale, resolution*6, 0, resolution+resolution*6, resolution);
                         break;
                 }
             }
