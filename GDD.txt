@@ -1,0 +1,8 @@
+Beneath the surface
+
+-Under ground cave diver.
+-completes contracts for mapping out unknown cave systems.
+-can purchase upgrades using earned cash
+-can mine to find bonus treasures.
+
+-platformer, tile based.
