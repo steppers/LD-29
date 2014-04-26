@@ -12,6 +12,7 @@ public class Play extends BasicGameState {
 
     private TileMap map;
     private float positionX, positionY, zoom;
+    private Player player;
 
     @Override
     public int getID() {
@@ -21,19 +22,16 @@ public class Play extends BasicGameState {
     @Override
     public void init(GameContainer gameContainer, StateBasedGame stateBasedGame) throws SlickException {
         zoom = 2;
-        map = new TileMap(20, 20, 16);
-        TileMap.TileType[][] tiles = new TileMap.TileType[20][20];
-        for(int x = 0; x < 20; x++){
-            for(int y = 0; y < 20; y++){
-                tiles[x][y] = TileMap.TileType.EMPTY;
-            }
-        }
-        map.setTiles(tiles);
+        map = DungeonGenerator.CreateDungeon(40, 40, DungeonGenerator.DungeonType.PRISON, 1);
+        player = new Player();
+        player.setPos(20, 17);
     }
 
     @Override
     public void render(GameContainer gameContainer, StateBasedGame stateBasedGame, Graphics graphics) throws SlickException {
         map.render(graphics, positionX, positionY, zoom);
+        player.render(graphics, positionX, positionY, zoom);
+        GUI.render(graphics, player);
     }
 
     @Override
@@ -43,15 +41,21 @@ public class Play extends BasicGameState {
         if(input.isKeyPressed(Input.KEY_ESCAPE))
             stateBasedGame.enterState(0);
 
-        if(input.isKeyDown(Input.KEY_W))
-            positionY += 3.5f * i/10;
-        if(input.isKeyDown(Input.KEY_S))
-            positionY -= 3.5f * i/10;
-        if(input.isKeyDown(Input.KEY_A))
-            positionX += 3.5f * i/10;
-        if(input.isKeyDown(Input.KEY_D))
-            positionX -= 3.5f * i/10;
+        updatePlayer(input);
+        GUI.update(input);
+    }
 
-        zoom += Mouse.getDWheel()*i/1000;
+    private void updatePlayer(Input input) {
+        if(input.isKeyPressed(Input.KEY_W)&&(map.getTile(player.posX, player.posY-1) != TileMap.TileType.STONE))
+            player.posY--;
+        if(input.isKeyPressed(Input.KEY_S)&&(map.getTile(player.posX, player.posY+1) != TileMap.TileType.STONE))
+            player.posY++;
+        if(input.isKeyPressed(Input.KEY_A)&&(map.getTile(player.posX-1, player.posY) != TileMap.TileType.STONE))
+            player.posX--;
+        if(input.isKeyPressed(Input.KEY_D)&&(map.getTile(player.posX+1, player.posY) != TileMap.TileType.STONE))
+            player.posX++;
+
+        positionX = -player.posX*32+384;
+        positionY = -player.posY*32+288;
     }
 }

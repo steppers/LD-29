@@ -11,8 +11,8 @@ import org.newdawn.slick.state.*;
 public class Game extends StateBasedGame
 {
 
-    static int height = 480;
-    static int width = 640;
+    static int height = 600;
+    static int width = 800;
     static boolean fullscreen = false;
     static boolean showFPS = true;
     static final String title = "LD-29";
@@ -32,6 +32,7 @@ public class Game extends StateBasedGame
     @Override
     public void initStatesList(GameContainer gc) throws SlickException
     {
+        GUI.init();
         this.addState(new Menu());
         this.addState(new Play());
         this.enterState(menu);
