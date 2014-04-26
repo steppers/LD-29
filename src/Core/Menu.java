@@ -1,9 +1,8 @@
 package Core;
 
-import org.newdawn.slick.GameContainer;
-import org.newdawn.slick.Graphics;
-import org.newdawn.slick.Image;
-import org.newdawn.slick.SlickException;
+import org.newdawn.slick.*;
+import org.newdawn.slick.geom.Rectangle;
+import org.newdawn.slick.geom.Vector2f;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
@@ -13,9 +12,13 @@ import org.newdawn.slick.state.StateBasedGame;
 public class Menu extends BasicGameState {
 
     private String Play = "Play";
+    private Rectangle playRect = new Rectangle(10, 40, 80, 15);
     private String Options = "Options";
+    private Rectangle optionsRect = new Rectangle(10, 70, 80, 15);
     private String About = "About";
+    private Rectangle aboutRect = new Rectangle(10, 100, 80, 15);
     private String Exit = "Quit";
+    private Rectangle quitRect = new Rectangle(10, 130, 80, 15);
 
     private Image Background;
     private Image BackgroundTop;
@@ -54,11 +57,49 @@ public class Menu extends BasicGameState {
                 graphics.drawString(About, 10, 100);
                 graphics.drawString(Exit, 10, 130);
                 break;
+            case OPTIONS:
+                graphics.drawString("Currently no options available :(", 10, 40);
+                graphics.drawString("<- Back", 10, 130);
+                break;
+            case ABOUT:
+                graphics.drawString("Created by Steppers for the Ludumdare-29 48-hour competition.", 10, 40);
+                graphics.drawString("<- Back", 10, 130);
+                break;
         }
     }
 
     @Override
     public void update(GameContainer gameContainer, StateBasedGame stateBasedGame, int i) throws SlickException {
+        Input input = gameContainer.getInput();
+        Vector2f mousePos = new Vector2f(input.getMouseX(), input.getMouseY());
+
+        switch (state){
+            case MAIN:
+                if(input.isMousePressed(0)){
+                    if(playRect.contains(mousePos.x, mousePos.y))
+                        stateBasedGame.enterState(11);
+                    if(optionsRect.contains(mousePos.x, mousePos.y))
+                        state = menuState.OPTIONS;
+                    if(aboutRect.contains(mousePos.x, mousePos.y))
+                        state = menuState.ABOUT;
+                    if(quitRect.contains(mousePos.x, mousePos.y))
+                        gameContainer.exit();
+                }
+                break;
+            case OPTIONS:
+                if(input.isMousePressed(0)){
+                    if(quitRect.contains(mousePos.x, mousePos.y))
+                        state = menuState.MAIN;
+                }
+                break;
+            case ABOUT:
+                if(input.isMousePressed(0)){
+                    if(quitRect.contains(mousePos.x, mousePos.y))
+                        state = menuState.MAIN;
+                }
+                break;
+        }
+
         scrollTopPos += (1 * i) /20.5f;
         scrollPos += (1 * i) /50.5f;
         if(scrollPos > 640)
