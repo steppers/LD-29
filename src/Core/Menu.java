@@ -1,5 +1,7 @@
 package Core;
 
+import Core.Tiles.TileWorld;
+import Core.Tiles.WorldGenerator;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;
@@ -35,7 +37,8 @@ public class Menu extends BasicGameState {
 
     @Override
     public void init(GameContainer gameContainer, StateBasedGame stateBasedGame) throws SlickException {
-
+        WorldGenerator.init(10, 10);
+        TileWorld world = WorldGenerator.generateWorld();
     }
 
     @Override
