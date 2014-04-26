@@ -1,7 +1,5 @@
 package Core;
 
-import Core.Tiles.TileWorld;
-import Core.Tiles.WorldGenerator;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;
@@ -13,7 +11,7 @@ import org.newdawn.slick.state.StateBasedGame;
  */
 public class Menu extends BasicGameState {
 
-    private String Play = "Create New World";
+    private String Play = "Play";
     private String Options = "Options";
     private String About = "About";
     private String Exit = "Quit";
@@ -37,18 +35,17 @@ public class Menu extends BasicGameState {
 
     @Override
     public void init(GameContainer gameContainer, StateBasedGame stateBasedGame) throws SlickException {
-        WorldGenerator.init(10, 10);
-        TileWorld world = WorldGenerator.generateWorld();
+
     }
 
     @Override
     public void render(GameContainer gameContainer, StateBasedGame stateBasedGame, Graphics graphics) throws SlickException {
         switch (state){
             case MAIN:
-                graphics.drawString(Play, 10, 10);
-                graphics.drawString(Options, 10, 40);
-                graphics.drawString(About, 10, 70);
-                graphics.drawString(Exit, 10, 100);
+                graphics.drawString(Play, 10, 40);
+                graphics.drawString(Options, 10, 70);
+                graphics.drawString(About, 10, 100);
+                graphics.drawString(Exit, 10, 130);
                 break;
         }
     }
