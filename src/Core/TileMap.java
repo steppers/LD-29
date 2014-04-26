@@ -3,6 +3,7 @@ package Core;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
+import org.newdawn.slick.geom.Rectangle;
 
 /**
  * Created by Ollie on 26/04/14.
@@ -72,6 +73,12 @@ public class TileMap {
                     case FLOOR_WATER:
                         g.drawImage(textures, (x*resolution*scale)+xOffset, (y*resolution*scale)+yOffset, (x*resolution*scale)+xOffset+resolution*scale, (y*resolution*scale)+yOffset+resolution*scale, resolution*6, 0, resolution+resolution*6, resolution);
                         break;
+                    case FLOOR_WOOD:
+                        g.drawImage(textures, (x*resolution*scale)+xOffset, (y*resolution*scale)+yOffset, (x*resolution*scale)+xOffset+resolution*scale, (y*resolution*scale)+yOffset+resolution*scale, resolution*7, 0, resolution+resolution*7, resolution);
+                        break;
+                    case FLOOR_DIRT:
+                        g.drawImage(textures, (x*resolution*scale)+xOffset, (y*resolution*scale)+yOffset, (x*resolution*scale)+xOffset+resolution*scale, (y*resolution*scale)+yOffset+resolution*scale, 0, resolution, resolution, resolution+resolution);
+                        break;
                 }
             }
         }
@@ -79,5 +86,19 @@ public class TileMap {
 
     public void setTiles(TileType[][] tiles){
         this.tiles = tiles;
+    }
+
+    public boolean isEmpty(Rectangle r){
+        for(int x = (int)r.getMinX(); x < r.getMaxX(); x++){
+            for(int y = (int)r.getMinY(); x < r.getMaxY(); y++){
+                if(tiles[x][y] != TileType.EMPTY)
+                    return false;
+            }
+        }
+        return true;
+    }
+
+    public TileType getTile(int x, int y){
+        return tiles[x][y];
     }
 }

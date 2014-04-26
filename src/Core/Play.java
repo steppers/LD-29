@@ -28,11 +28,6 @@ public class Play extends BasicGameState {
                 tiles[x][y] = TileMap.TileType.EMPTY;
             }
         }
-
-        tiles[10][10] = TileMap.TileType.FLOOR_WATER;
-        tiles[11][10] = TileMap.TileType.FLOOR_WATER;
-        tiles[10][11] = TileMap.TileType.DOOR_STONE;
-        tiles[11][11] = TileMap.TileType.STONE;
         map.setTiles(tiles);
     }
 
