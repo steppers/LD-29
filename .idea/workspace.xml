@@ -7,13 +7,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="43026df8-6e1a-4247-88bc-b4fec99e6a92" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/tex/GUI.png" afterPath="$PROJECT_DIR$/res/tex/GUI.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/tex/Slime.png" afterPath="$PROJECT_DIR$/res/tex/Slime.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/tex/tiles.png" afterPath="$PROJECT_DIR$/res/tex/tiles.png" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Enemies/Enemy.java" afterPath="$PROJECT_DIR$/src/Enemies/Enemy.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Enemies/EnemyManager.java" afterPath="$PROJECT_DIR$/src/Enemies/EnemyManager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Core/Menu.java" afterPath="$PROJECT_DIR$/src/Core/Menu.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Core/Play.java" afterPath="$PROJECT_DIR$/src/Core/Play.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="LUDUMDARE.iws" />
@@ -124,7 +118,7 @@
       <file leaf-file-name="Enemy.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Enemies/Enemy.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="147" column="8" selection-start="4948" selection-end="4948" vertical-scroll-proportion="0.6057692" vertical-offset="1035" max-vertical-offset="1632">
+            <state line="144" column="62" selection-start="4811" selection-end="4811" vertical-scroll-proportion="0.24295774" vertical-offset="1035" max-vertical-offset="1666">
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#setImage#0;class#Enemy#0" expanded="false" />
@@ -662,7 +656,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3284553" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3284553" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.41626015" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.41626015" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3284553" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3284553" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -972,7 +966,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Enemies/Enemy.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="147" column="8" selection-start="4948" selection-end="4948" vertical-scroll-proportion="0.6057692" vertical-offset="1035" max-vertical-offset="1632">
+        <state line="144" column="62" selection-start="4811" selection-end="4811" vertical-scroll-proportion="0.24295774" vertical-offset="1035" max-vertical-offset="1666">
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#setImage#0;class#Enemy#0" expanded="false" />

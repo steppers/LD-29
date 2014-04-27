@@ -146,10 +146,12 @@ public class Enemy {
         currentPath = PathFinder.findPath(posX, posY, player.posX, player.posY);
         GridPos n = currentPath.getNextNode();
         if(n != null){
-            CellSystem.cells[posX][posY].enemy = false;
-            CellSystem.cells[n.x][n.y].enemy = true;
-            posX = n.x;
-            posY = n.y;
+            if(n.x != player.posX || n.y != player.posY){
+                CellSystem.cells[posX][posY].enemy = false;
+                CellSystem.cells[n.x][n.y].enemy = true;
+                posX = n.x;
+                posY = n.y;
+            }
         }
     }
     private void updateAttacking(TileMap map, Player player) {
