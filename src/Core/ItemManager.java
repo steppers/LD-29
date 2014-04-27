@@ -2,9 +2,12 @@ package Core;
 
 import Enemies.Enemy;
 import Enemies.EnemyManager;
+import GUI.GUI;
+import GUI.GUIStatPopup;
 import Items.Item;
 import Items.Sword;
 import Items.Weapon;
+import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
 
 import java.util.ArrayList;
@@ -24,7 +27,8 @@ public class ItemManager {
             Enemy e = em.getEnemy(x, y);
             if(e != null){
                 e.stats.HP -= playerWeapon.stats.Attack;
-                e.state = 
+                GUI.addComponent(new GUIStatPopup(e.posX, e.posY-1,"-"+playerWeapon.stats.Attack, Color.orange), 1.5f);
+                em.getEnemy(x, y).state = Enemy.AIState.ATTACKING;
                 if(e.stats.HP <= 0)
                     em.removeEnemy(e);
                 return false;
@@ -44,6 +48,9 @@ public class ItemManager {
             levelItems.remove(item);
         }else if(inventoryItems.size() >= maxInventory){
             return;
+        }else{
+            inventoryItems.add(item);
+            levelItems.remove(item);
         }
     }
 
@@ -54,8 +61,21 @@ public class ItemManager {
         levelItems.add(item);
     }
 
+    public static void DropEnemyItem(Item item, int x, int y){
+        item.x = x;
+        item.y = y;
+        levelItems.add(item);
+    }
+
+    public static Item getItem(int x, int y){
+        for(Item i : levelItems){
+            if(i.x == x && i.y == y)
+                return i;
+        }
+        return null;
+    }
+
     public static void renderItems(Graphics g, float xOffset, float yOffset, float scale){
-        playerWeapon.image.draw(740, 542, 48, 48);
         for(Item i : levelItems){
             i.renderLevelItem(g, xOffset, yOffset, scale);
         }

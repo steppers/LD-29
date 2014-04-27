@@ -1,7 +1,10 @@
-package Core;
+package GUI;
 
+import Core.ItemManager;
+import Core.Player;
 import org.newdawn.slick.*;
 import org.newdawn.slick.geom.Rectangle;
+import java.util.ArrayList;
 
 /**
  * Created by Ollie on 26/04/14.
@@ -12,14 +15,19 @@ public class GUI {
     private static Image menu;
 
     private static Rectangle info = new Rectangle(682, 542, 48, 48);
+    private static Rectangle pickUp = new Rectangle(376, 542, 48, 48);
+
+    private static ArrayList<GUIComponent> components = new ArrayList<GUIComponent>();
 
     public enum GUIState{
         MAIN_MENU,
         IN_GAME,
         INVENTORY,
-        INFO
+        INFO,
+        DEAD
     }
 
+    public static boolean isOverItem = false;
     public static GUIState state = GUIState.IN_GAME;
     public static Color GUIBacking = new Color(70, 70, 70);
 
@@ -35,17 +43,36 @@ public class GUI {
         }
     }
 
-    public static void update(Input input){
+    public static void addComponent(GUIComponent c, float duration){
+        c.startTime = System.nanoTime();
+        c.duration = duration;
+        components.add(c);
+    }
+
+    public static void update(Input input, Player player){
         switch(state){
             case IN_GAME:
+                for(int i = 0; i < components.size(); i++){
+                    if(System.nanoTime() - components.get(i).startTime >= 1000000000*components.get(i).duration){
+                        components.remove(i);
+                        i--;
+                    }
+                }
+
                 if(info.contains(input.getMouseX(), input.getMouseY()) && input.isMousePressed(0)){
                     state = GUIState.INFO;
+                }
+                if(pickUp.contains(input.getMouseX(), input.getMouseY()) && input.isMousePressed(0) && isOverItem){
+                    ItemManager.PickupItem(ItemManager.getItem(player.posX, player.posY));
                 }
                 break;
         }
     }
 
-    public static void render(Graphics g, Player p){
+    public static void render(Graphics g, Player p, float xOffset, float yOffset, float scale){
+        for(GUIComponent c : components){
+            c.render(g, xOffset, yOffset, scale);
+        }
         g.setColor(GUIBacking);
         switch(state){
             case IN_GAME:
@@ -72,6 +99,11 @@ public class GUI {
         g.fillRoundRect(672, 530, 140, 82, 12);
         gui.draw(682, 542, 730, 590, 64, 0, 80, 16);
         gui.draw(740, 542, 788, 590, 96, 0, 112, 16);
+
+        if(isOverItem){
+            gui.draw(376, 542, 424, 590, 112, 0, 128, 16);
+        }
+
         //tr
         g.fillRoundRect(485, -12, 332, 64, 12);
         g.setColor(Color.lightGray);

@@ -1,7 +1,8 @@
 package Core;
 
-import Enemies.Enemy;
 import Enemies.EnemyManager;
+import GUI.GUI;
+import Items.Item;
 import PathFinding.GridPos;
 import PathFinding.Path;
 import PathFinding.PathFinder;
@@ -50,10 +51,11 @@ public class Play extends BasicGameState {
     @Override
     public void render(GameContainer gameContainer, StateBasedGame stateBasedGame, Graphics graphics) throws SlickException {
         map.render(graphics, positionX, positionY, zoom);
+        ItemManager.renderItems(graphics, positionX, positionY, zoom);
         player.render(graphics, positionX, positionY, zoom);
         enemyManager.render(graphics, positionX, positionY, zoom);
-        GUI.render(graphics, player);
-        ItemManager.renderItems(graphics, positionX, positionY, zoom);
+        GUI.render(graphics, player, positionX, positionY, zoom);
+        ItemManager.playerWeapon.image.draw(740, 542, 48, 48);
     }
 
     @Override
@@ -65,7 +67,7 @@ public class Play extends BasicGameState {
             stateBasedGame.getState(0).init(gameContainer, stateBasedGame);
         }
 
-        updatePlayer(input);
+        updatePlayer(input, stateBasedGame, gameContainer);
         enemyManager.update(turnManager, player);
 
         if(reloaded){
@@ -73,10 +75,16 @@ public class Play extends BasicGameState {
             reloaded = false;
         }
 
-        GUI.update(input);
+        GUI.update(input, player);
     }
 
-    private void updatePlayer(Input input) {
+    private void updatePlayer(Input input, StateBasedGame sbg, GameContainer gc) throws SlickException{
+        if(player.hp <= 0){
+            GUI.state = GUI.GUIState.DEAD;
+            sbg.enterState(0);
+            sbg.getState(0).init(gc, sbg);
+        }
+
         if(!movementPhase){
             if(input.isMousePressed(0)){
                 int x, y;
@@ -89,7 +97,16 @@ public class Play extends BasicGameState {
                 }
                 if(Math.abs(x - player.posX) <= 1 && Math.abs(y - player.posY) <= 1){
                     movementPhase = ItemManager.useItem(ItemManager.playerWeapon, x, y, enemyManager);
+                    if(movementPhase == true)
+                        turnManager.addEnemyTurns(1);
                 }
+            }
+
+            Item i = ItemManager.getItem(player.posX, player.posY);
+            if(i != null){
+                GUI.isOverItem = true;
+            }else{
+                GUI.isOverItem = false;
             }
 
             if(input.isKeyPressed(Input.KEY_SPACE)){
@@ -97,6 +114,12 @@ public class Play extends BasicGameState {
                 movementPhase = true;
             }
         }else{
+            Item i = ItemManager.getItem(player.posX, player.posY);
+            if(i != null){
+                GUI.isOverItem = true;
+            }else{
+                GUI.isOverItem = false;
+            }
             if(System.nanoTime() - moveLastTime >= 100000000){
                 GridPos n = playerPath.getNextNode();
                 if(n != null){

@@ -1,6 +1,8 @@
 package Enemies;
 
 import Core.Stats;
+import Items.Item;
+import Items.Sword;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 
@@ -18,6 +20,7 @@ public class Slime extends Enemy {
             e.printStackTrace();
         }
 
+        items = new Item[]{new Sword(0, 0, 2, 0, 1, 0)};
         stats = new Stats((int)(10*difficulty), (int)(10*difficulty), (int)(3+difficulty), 0, (int)(1*difficulty), (int)(3+difficulty));
         moveSpeed = 1;
     }

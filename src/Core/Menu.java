@@ -1,5 +1,6 @@
 package Core;
 
+import GUI.GUI;
 import org.newdawn.slick.*;
 import org.newdawn.slick.geom.Rectangle;
 import org.newdawn.slick.geom.Vector2f;
@@ -40,7 +41,7 @@ public class Menu extends BasicGameState {
 
     @Override
     public void render(GameContainer gameContainer, StateBasedGame stateBasedGame, Graphics graphics) throws SlickException {
-        GUI.render(graphics, null);
+        GUI.render(graphics, null, 0, 0, 1);
         switch (state){
             case MAIN:
                 graphics.drawString(Play, 390, 400);
@@ -65,7 +66,7 @@ public class Menu extends BasicGameState {
     public void update(GameContainer gameContainer, StateBasedGame stateBasedGame, int i) throws SlickException {
         Input input = gameContainer.getInput();
         Vector2f mousePos = new Vector2f(input.getMouseX(), input.getMouseY());
-        GUI.update(input);
+        GUI.update(input, null);
 
         switch (state){
             case MAIN:

@@ -1,6 +1,6 @@
 package Core;
 
-import org.lwjgl.opengl.Display;
+import GUI.GUI;
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.*;
 

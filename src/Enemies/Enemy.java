@@ -1,13 +1,14 @@
 package Enemies;
 
-import Core.CellSystem;
-import Core.Player;
-import Core.Stats;
-import Core.TileMap;
+import Core.*;
+import GUI.GUI;
+import GUI.GUIStatPopup;
+import Items.Item;
 import PathFinding.GridPos;
 import PathFinding.Path;
 import PathFinding.PathFinder;
 import org.newdawn.slick.Animation;
+import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 
@@ -33,9 +34,10 @@ public class Enemy {
     private Animation anim;
     private float difficulty = 1;
     public Stats stats;
+    public Item[] items;
 
     public int lastX, lastY;
-    private Path currentPath;
+    public Path currentPath;
 
     public int moveSpeed;
 
@@ -57,7 +59,10 @@ public class Enemy {
     }
 
     public void dropItems(){
-
+        for(int i = 0; i < items.length; i++){
+            ItemManager.DropEnemyItem(items[i], posX, posY);
+        }
+        items = new Item[0];
     }
 
     public void update(TileMap map, Player player){
@@ -144,10 +149,17 @@ public class Enemy {
                     break;
             }
         }
+        currentPath = PathFinder.findPath(posX, posY, player.posX, player.posY, false);
+        if(currentPath.length() < 7)
+            state = AIState.FOLLOWING;
     }
 
     private void updateFollowing(TileMap map, Player player) {
         currentPath = PathFinder.findPath(posX, posY, player.posX, player.posY, false);
+        if(currentPath.length() > 8)
+            state = AIState.IDLE;
+        if(currentPath.length() < 2)
+            state = AIState.ATTACKING;
         GridPos n = currentPath.getNextNode();
         if(n != null){
             if(!CellSystem.cells[n.x][n.y].enemy){
@@ -162,7 +174,13 @@ public class Enemy {
         }
     }
     private void updateAttacking(TileMap map, Player player) {
-
+        if(Math.abs(posX - player.posX) > 1 || Math.abs(posY - player.posY) > 1){
+            currentPath = PathFinder.findPath(posX, posY, player.posX, player.posY, false);
+            state = AIState.FOLLOWING;
+        }else{
+            GUI.addComponent(new GUIStatPopup(player.posX, player.posY - 1, "-" + stats.Attack, Color.red), 1.5f);
+            player.hp -= stats.Attack;
+        }
     }
     private void updateSleeping(TileMap map, Player player) {
 

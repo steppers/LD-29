@@ -21,4 +21,8 @@ public class Path {
     public void removeLastNode(){
         path.remove(path.size()-1);
     }
+
+    public int length(){
+        return path.size();
+    }
 }
