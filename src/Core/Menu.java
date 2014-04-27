@@ -20,11 +20,6 @@ public class Menu extends BasicGameState {
     private String Exit = "Quit";
     private Rectangle quitRect = new Rectangle(385, 490, 35, 15);
 
-    private Image Background;
-    private Image BackgroundTop;
-    private float scrollPos = 0;
-    private float scrollTopPos = 0;
-
     private enum menuState{
         MAIN,
         OPTIONS,
@@ -100,12 +95,5 @@ public class Menu extends BasicGameState {
                 }
                 break;
         }
-
-        scrollTopPos += (1 * i) /20.5f;
-        scrollPos += (1 * i) /50.5f;
-        if(scrollPos > 640)
-            scrollPos -= 640;
-        if(scrollTopPos > 640)
-            scrollTopPos -= 640;
     }
 }

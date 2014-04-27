@@ -1,6 +1,7 @@
 package Core;
 
 import Enemies.EnemyManager;
+import PathFinding.PathFinder;
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
@@ -29,9 +30,10 @@ public class Play extends BasicGameState {
         map = DungeonGenerator.CreateDungeon(40, 40, DungeonGenerator.DungeonType.PRISON, 1);
         player = new Player();
         player.setPos(20, 17);
-        enemyManager = new EnemyManager(8, 1);
+        enemyManager = new EnemyManager(8, 1, map);
+        enemyManager.addAllEnemies(map, player);
+        PathFinder.setMap(map);
         turnManager = new TurnManager();
-        turnManager.addEnemyTurns(100);
         reloaded = true;
     }
 
@@ -53,7 +55,7 @@ public class Play extends BasicGameState {
         }
 
         updatePlayer(input);
-        enemyManager.update(map, turnManager, player);
+        enemyManager.update(turnManager, player);
 
         if(reloaded){
             GUI.state = GUI.GUIState.IN_GAME;

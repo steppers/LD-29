@@ -14,19 +14,21 @@ import java.util.Random;
  */
 public class EnemyManager {
 
+    private TileMap map;
     private int maxEnemies;
     private float difficulty;
     private ArrayList<Enemy> enemies = new ArrayList<Enemy>();
 
-    public EnemyManager(int maxEnemies, float difficulty){
+    public EnemyManager(int maxEnemies, float difficulty, TileMap map){
         this.difficulty = difficulty;
         this.maxEnemies = maxEnemies;
+        this.map = map;
     }
 
-    public void update(TileMap map, TurnManager turnManager, Player player){
+    public void update(TurnManager turnManager, Player player){
         if(turnManager.hasTurnsLeft()){
             for(Enemy e : enemies){
-                e.update(player);
+                e.update(map, player);
             }
 
             if(enemies.size() < maxEnemies){
@@ -48,9 +50,15 @@ public class EnemyManager {
                 if(x != player.posX && y != player.posY && !CellSystem.cells[x][y].enemy){
                     enemies.add(new Slime(x, y, difficulty));
                     CellSystem.cells[x][y].enemy = true;
-                    break;
+                    return;
                 }
             }
+        }
+    }
+
+    public void addAllEnemies(TileMap map, Player player){
+        while(enemies.size() < maxEnemies){
+            addNewEnemy(map, player);
         }
     }
 
