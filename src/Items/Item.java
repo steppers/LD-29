@@ -10,15 +10,10 @@ public class Item extends Core.Object {
 
     public boolean isHeld = false;
     public boolean isEquipped = false;
+    public boolean isStackable = true;
+    public int quantity = 1;
 
-    public enum ItemType{
-        WEAPON,
-        ARMOUR,
-        POTION,
-        JEWELRY
-    }
-
-    public Item(int x, int y, Image image) {
-        super(x, y, true, image);
+    public Item(int x, int y) {
+        super(x, y, true);
     }
 }

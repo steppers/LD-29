@@ -15,8 +15,10 @@ public class Path {
     public GridPos getNextNode(){
         if(path.size() <= 0)
             return null;
-        GridPos p = path.get(path.size()-1);
-        path.remove(p);
-        return p;
+        return path.get(path.size()-1);
+    }
+
+    public void removeLastNode(){
+        path.remove(path.size()-1);
     }
 }

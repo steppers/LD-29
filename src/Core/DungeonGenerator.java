@@ -256,30 +256,22 @@ public class DungeonGenerator {
             if(tiles[pos[0]][pos[1]] == TileMap.TileType.STONE){
                 if(pos[0] < tiles.length-1 && pos[0] > 0 && pos[1] < tiles[0].length-1 && pos[1] > 0){
                     if(tiles[pos[0]-1][pos[1]] == TileMap.TileType.STONE && tiles[pos[0]+1][pos[1]] == TileMap.TileType.STONE){
-                        if(tiles[pos[0]][pos[1]+1] == TileMap.TileType.EMPTY && tiles[pos[0]][pos[1]-1] != TileMap.TileType.EMPTY){
+                        if(tiles[pos[0]][pos[1]+1] == TileMap.TileType.EMPTY && tiles[pos[0]][pos[1]-1] == TileMap.TileType.FLOOR_STONE){
                             pos[2] = 1;
                             return pos;
                         }
-                        if(tiles[pos[0]][pos[1]-1] == TileMap.TileType.EMPTY && tiles[pos[0]][pos[1]+1] != TileMap.TileType.EMPTY){
+                        if(tiles[pos[0]][pos[1]-1] == TileMap.TileType.EMPTY && tiles[pos[0]][pos[1]+1] == TileMap.TileType.FLOOR_STONE){
                             pos[2] = 0;
-                            return pos;
-                        }
-                        if(tiles[pos[0]][pos[1]+1] == TileMap.TileType.EMPTY && tiles[pos[0]][pos[1]-1] == TileMap.TileType.EMPTY){
-                            pos[2] = rand.nextInt(1);
                             return pos;
                         }
                     }
                     if(tiles[pos[0]][pos[1]-1] == TileMap.TileType.STONE && tiles[pos[0]][pos[1]+1] == TileMap.TileType.STONE){
-                        if(tiles[pos[0]+1][pos[1]] == TileMap.TileType.EMPTY && tiles[pos[0]-1][pos[1]] != TileMap.TileType.EMPTY){
+                        if(tiles[pos[0]+1][pos[1]] == TileMap.TileType.EMPTY && tiles[pos[0]-1][pos[1]] == TileMap.TileType.FLOOR_STONE){
                             pos[2] = 2;
                             return pos;
                         }
-                        if(tiles[pos[0]-1][pos[1]] == TileMap.TileType.EMPTY && tiles[pos[0]+1][pos[1]] != TileMap.TileType.EMPTY){
+                        if(tiles[pos[0]-1][pos[1]] == TileMap.TileType.EMPTY && tiles[pos[0]+1][pos[1]] == TileMap.TileType.FLOOR_STONE){
                             pos[2] = 3;
-                            return pos;
-                        }
-                        if(tiles[pos[0]+1][pos[1]] == TileMap.TileType.EMPTY && tiles[pos[0]-1][pos[1]] == TileMap.TileType.EMPTY){
-                            pos[2] = rand.nextInt(1)+2;
                             return pos;
                         }
                     }

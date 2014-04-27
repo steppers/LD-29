@@ -35,13 +35,27 @@ public class PathFinder {
                         tmp[x][y] = 0;
                         break;
                 }
-                if(CellSystem.cells[x][y].enemy == true)
-                    tmp[x][y] = 1;
             }
         }
     }
 
-    public static Path findPath(int sx, int sy, int dx, int dy){
+    public static Path findPath(int sx, int sy, int dx, int dy, boolean calcEnemies){
+
+        if(calcEnemies){
+            for(int x = 0; x < tmp.length; x++){
+                for(int y = 0; y < tmp[0].length; y++){
+                    if(CellSystem.cells[x][y].enemy == true)
+                        tmp[x][y] = 1;
+                }
+            }
+        }else{
+            for(int x = 0; x < tmp.length; x++){
+                for(int y = 0; y < tmp[0].length; y++){
+                    if(CellSystem.cells[x][y].enemy == true)
+                        tmp[x][y] = 0;
+                }
+            }
+        }
 
         int parentXval = 0, parentYval = 0,
         a = 0, b = 0, m = 0, u = 0, v = 0, temp = 0, corner = 0,numberOfOpenListItems = 0,
@@ -108,93 +122,60 @@ public class PathFinder {
                         if(a != -1 && b != -1 && a != map.width && b != map.height){
                             if(whichList[a][b] != onClosedList){
                                 if(tmp[a][b] != unwalkable){
+                                    if(whichList[a][b] != onOpenList){
+                                        newOpenListItemID = newOpenListItemID + 1;
+                                        m = numberOfOpenListItems+1;
+                                        openList[m] = newOpenListItemID;
+                                        openX[newOpenListItemID] = a;
+                                        openY[newOpenListItemID] = b;
 
-                                    corner = walkable;
-                                    if(a == parentXval-1){
-                                        if(b == parentYval-1){
-                                            if (tmp[parentXval-1][parentYval] == unwalkable
-                                                    || tmp[parentXval][parentYval-1] == unwalkable)
-                                            corner = unwalkable;
-                                        }
-                                        else if (b == parentYval+1)
+                                        Gcost[a][b] = Gcost[parentXval][parentYval] + 1;
+                                        Hcost[openList[m]] = Math.abs(a - dx)+Math.abs(b - dy);
+                                        Fcost[openList[m]] = Gcost[a][b] + Hcost[openList[m]];
+                                        parentX[a][b] = parentXval; parentY[a][b] = parentYval;
+
+                                        while (m != 1)
                                         {
-                                            if (tmp[parentXval][parentYval+1] == unwalkable
-                                                    || tmp[parentXval-1][parentYval] == unwalkable)
-                                                corner = unwalkable;
-                                        }
-                                    }else if (a == parentXval+1)
-                                    {
-                                        if (b == parentYval-1)
-                                        {
-                                            if (tmp[parentXval][parentYval-1] == unwalkable
-                                                    || tmp[parentXval+1][parentYval] == unwalkable)
-                                                corner = unwalkable;
-                                        }
-                                        else if (b == parentYval+1)
-                                        {
-                                            if (tmp[parentXval+1][parentYval] == unwalkable
-                                                    || tmp[parentXval][parentYval+1] == unwalkable)
-                                                corner = unwalkable;
-                                        }
-                                    }
-
-                                    if(corner == walkable){
-                                        if(whichList[a][b] != onOpenList){
-                                            newOpenListItemID = newOpenListItemID + 1;
-                                            m = numberOfOpenListItems+1;
-                                            openList[m] = newOpenListItemID;
-                                            openX[newOpenListItemID] = a;
-                                            openY[newOpenListItemID] = b;
-
-                                            Gcost[a][b] = Gcost[parentXval][parentYval] + 1;
-                                            Hcost[openList[m]] = Math.abs(a - dx)+Math.abs(b - dy);
-                                            Fcost[openList[m]] = Gcost[a][b] + Hcost[openList[m]];
-                                            parentX[a][b] = parentXval; parentY[a][b] = parentYval;
-
-                                            while (m != 1)
+                                            if (Fcost[openList[m]] <= Fcost[openList[m/2]])
                                             {
-                                                if (Fcost[openList[m]] <= Fcost[openList[m/2]])
-                                                {
-                                                    temp = openList[m/2];
-                                                    openList[m/2] = openList[m];
-                                                    openList[m] = temp;
-                                                    m = m/2;
-                                                }
-                                                else
-                                                    break;
+                                                temp = openList[m/2];
+                                                openList[m/2] = openList[m];
+                                                openList[m] = temp;
+                                                m = m/2;
                                             }
-                                            numberOfOpenListItems = numberOfOpenListItems+1;
-                                            whichList[a][b] = onOpenList;
-                                        }else{
-                                            tempGcost = Gcost[parentXval][parentYval] + 1;
+                                            else
+                                                break;
+                                        }
+                                        numberOfOpenListItems = numberOfOpenListItems+1;
+                                        whichList[a][b] = onOpenList;
+                                    }else{
+                                        tempGcost = Gcost[parentXval][parentYval] + 1;
 
-                                            if(tempGcost < Gcost[a][b]){
-                                                parentX[a][b] = parentXval;
-                                                parentY[a][b] = parentYval;
-                                                Gcost[a][b] = tempGcost;
+                                        if(tempGcost < Gcost[a][b]){
+                                            parentX[a][b] = parentXval;
+                                            parentY[a][b] = parentYval;
+                                            Gcost[a][b] = tempGcost;
 
-                                                for(int x = 1; x <= numberOfOpenListItems; x++){
-                                                    if(openX[openList[x]] == a && openY[openList[x]] == b){
-                                                        Fcost[openList[x]] = Gcost[a][b] + Hcost[openList[x]];
+                                            for(int x = 1; x <= numberOfOpenListItems; x++){
+                                                if(openX[openList[x]] == a && openY[openList[x]] == b){
+                                                    Fcost[openList[x]] = Gcost[a][b] + Hcost[openList[x]];
 
-                                                        m = x;
-                                                        while(m != 1){
-                                                            if(Fcost[openList[m]] < Fcost[openList[m/2]]){
-                                                                temp = openList[m/2];
-                                                                openList[m/2] = openList[m];
-                                                                openList[m] = temp;
-                                                                m = m/2;
-                                                            }else
-                                                                break;
-                                                        }
-                                                        break;
+                                                    m = x;
+                                                    while(m != 1){
+                                                        if(Fcost[openList[m]] < Fcost[openList[m/2]]){
+                                                            temp = openList[m/2];
+                                                            openList[m/2] = openList[m];
+                                                            openList[m] = temp;
+                                                            m = m/2;
+                                                        }else
+                                                            break;
                                                     }
+                                                    break;
                                                 }
-
                                             }
+
                                         }
                                     }
-
                                 }
                             }
                         }

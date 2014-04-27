@@ -71,7 +71,7 @@ public class GUI {
         //br
         g.fillRoundRect(672, 530, 140, 82, 12);
         gui.draw(682, 542, 730, 590, 64, 0, 80, 16);
-        gui.draw(740, 542, 788, 590, 80, 0, 96, 16);
+        gui.draw(740, 542, 788, 590, 96, 0, 112, 16);
         //tr
         g.fillRoundRect(485, -12, 332, 64, 12);
         g.setColor(Color.lightGray);

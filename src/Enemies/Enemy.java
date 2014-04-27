@@ -43,7 +43,7 @@ public class Enemy {
         this.posX = posX;
         this.posY = posY;
         r = new Random(System.nanoTime());
-        state = AIState.FOLLOWING;
+        state = AIState.IDLE;
     }
 
     public void setImage(Image i){
@@ -54,6 +54,10 @@ public class Enemy {
                 i.getSubImage(32, 0, 16, 16),
                 i.getSubImage(48, 0, 16, 16),
                 i.getSubImage(64, 0, 16, 16)}, 100);
+    }
+
+    public void dropItems(){
+
     }
 
     public void update(TileMap map, Player player){
@@ -143,14 +147,17 @@ public class Enemy {
     }
 
     private void updateFollowing(TileMap map, Player player) {
-        currentPath = PathFinder.findPath(posX, posY, player.posX, player.posY);
+        currentPath = PathFinder.findPath(posX, posY, player.posX, player.posY, false);
         GridPos n = currentPath.getNextNode();
         if(n != null){
-            if(n.x != player.posX || n.y != player.posY){
-                CellSystem.cells[posX][posY].enemy = false;
-                CellSystem.cells[n.x][n.y].enemy = true;
-                posX = n.x;
-                posY = n.y;
+            if(!CellSystem.cells[n.x][n.y].enemy){
+                if(n.x != player.posX || n.y != player.posY){
+                    currentPath.removeLastNode();
+                    CellSystem.cells[posX][posY].enemy = false;
+                    CellSystem.cells[n.x][n.y].enemy = true;
+                    posX = n.x;
+                    posY = n.y;
+                }
             }
         }
     }

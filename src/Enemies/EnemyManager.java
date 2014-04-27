@@ -68,4 +68,18 @@ public class EnemyManager {
         }
     }
 
+    public Enemy getEnemy(int x, int y){
+        for(Enemy e : enemies){
+            if (e.posX == x && e.posY == y)
+                return e;
+        }
+        return null;
+    }
+
+    public void removeEnemy(Enemy e){
+        e.dropItems();
+        CellSystem.cells[e.posX][e.posY].enemy = false;
+        enemies.remove(e);
+    }
+
 }

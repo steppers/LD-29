@@ -99,6 +99,9 @@ public class TileMap {
     }
 
     public TileType getTile(int x, int y){
-        return tiles[x][y];
+        if(x>=0 && x < width && y >= 0 && y < height)
+            return tiles[x][y];
+        else
+            return null;
     }
 }
