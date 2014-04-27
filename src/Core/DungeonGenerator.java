@@ -28,6 +28,8 @@ public class DungeonGenerator {
     public static TileMap CreateDungeon(int width, int height, DungeonType type, int difficulty){
         rand = new Random(System.nanoTime());
         map = new TileMap(width, height, Config.textureResolution);
+        CellSystem.setSize(width, height);
+        CellSystem.init();
         tiles = new TileMap.TileType[width][height];
         for(int x = 0; x < width; x++){
             for(int y = 0; y < height; y++){

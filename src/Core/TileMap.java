@@ -9,7 +9,7 @@ import org.newdawn.slick.geom.Rectangle;
  * Created by Ollie on 26/04/14.
  */
 public class TileMap {
-    private int width, height, resolution;
+    public int width, height, resolution;
 
     private TileType[][] tiles;
 

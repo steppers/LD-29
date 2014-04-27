@@ -1,5 +1,7 @@
 package Core;
 
+import Items.Item;
+import org.newdawn.slick.Animation;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
@@ -14,6 +16,7 @@ public class Player {
     public int posX, posY;
     private ArrayList<Item> items = new ArrayList<Item>();
     private Image image;
+    private Animation downanim;
 
     public String playerClass = "Warrior";
 
@@ -30,6 +33,10 @@ public class Player {
             System.err.println("Error: Cannot load Player.png.");
             e.printStackTrace();
         }
+        downanim = new Animation(new Image[]{image.getSubImage(0, 0, 16, 16),
+                image.getSubImage(16, 0, 16, 16),
+                image.getSubImage(32, 0, 16, 16),
+                image.getSubImage(48, 0, 16, 16)}, 250);
     }
 
     public void addItem(Item item){
@@ -57,7 +64,7 @@ public class Player {
     }
 
     public void render(Graphics g, float xOffset, float yOffset, float scale){
-        g.drawImage(image, (posX*16*scale)+xOffset, (posY*16*scale)+yOffset, (posX*16*scale)+xOffset+16*scale, (posY*16*scale)+yOffset+16*scale, 0, 0, 16, 16);
+        downanim.draw((posX*16*scale)+xOffset, (posY*16*scale)+yOffset, 16*scale, 16*scale);
     }
 
 }

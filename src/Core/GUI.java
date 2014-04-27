@@ -9,6 +9,7 @@ import org.newdawn.slick.geom.Rectangle;
 public class GUI {
 
     private static Image gui;
+    private static Image menu;
 
     private static Rectangle info = new Rectangle(682, 542, 48, 48);
 
@@ -24,17 +25,23 @@ public class GUI {
 
     public static void init(){
         try{
+            menu = new Image("res/tex/Menu.png");
+            menu.setFilter(Image.FILTER_NEAREST);
             gui = new Image("res/tex/GUI.png");
             gui.setFilter(Image.FILTER_NEAREST);
         }catch(SlickException e){
-            System.err.println("Error: Cannot load GUI.png.");
+            System.err.println("Error: Cannot load GUI files.");
             e.printStackTrace();
         }
     }
 
     public static void update(Input input){
-        if(info.contains(input.getMouseX(), input.getMouseY()) && input.isMousePressed(0)){
-            state = GUIState.INFO;
+        switch(state){
+            case IN_GAME:
+                if(info.contains(input.getMouseX(), input.getMouseY()) && input.isMousePressed(0)){
+                    state = GUIState.INFO;
+                }
+                break;
         }
     }
 
@@ -47,7 +54,13 @@ public class GUI {
             case INFO:
                 renderInfo(g, p);
                 break;
+            case MAIN_MENU:
+                renderMenu(g);
         }
+    }
+
+    private static void renderMenu(Graphics g) {
+        menu.draw(0, 0, 800, 600, 0, 0, 64, 48);
     }
 
     private static void renderInGame(Graphics g, Player p){
