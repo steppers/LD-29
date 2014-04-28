@@ -3,12 +3,15 @@ package Core;
 import Enemies.EnemyManager;
 import GUI.GUI;
 import Items.Item;
+import Items.ItemManager;
 import PathFinding.GridPos;
 import PathFinding.Path;
 import PathFinding.PathFinder;
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
+
+import java.util.Random;
 
 /**
  * Created by Ollie on 26/04/14.
@@ -22,6 +25,7 @@ public class Play extends BasicGameState {
     private double moveLastTime = 0;
     private EnemyManager enemyManager;
     private TurnManager turnManager;
+    private int difficulty = 1;
 
     boolean reloaded = false;
     boolean movementPhase = false;
@@ -33,12 +37,13 @@ public class Play extends BasicGameState {
 
     @Override
     public void init(GameContainer gameContainer, StateBasedGame stateBasedGame) throws SlickException {
+        difficulty = 1;
         zoom = 2;
         map = DungeonGenerator.CreateDungeon(40, 40, DungeonGenerator.DungeonType.PRISON, 1);
         player = new Player();
         player.setPos(20, 17);
         moveLastTime = System.nanoTime();
-        enemyManager = new EnemyManager(8, 1, map);
+        enemyManager = new EnemyManager(10, 1, map);
         enemyManager.addAllEnemies(map, player);
         PathFinder.setMap(map);
         turnManager = new TurnManager();
@@ -48,13 +53,25 @@ public class Play extends BasicGameState {
         positionY = -player.posY*32+288;
     }
 
+    private void nextLevel(){
+        difficulty++;
+        map = DungeonGenerator.CreateDungeon(40, 40, DungeonGenerator.DungeonType.PRISON, difficulty);
+        player.setPos(20, 17);
+        moveLastTime = System.nanoTime();
+        enemyManager = new EnemyManager(10, difficulty, map);
+        enemyManager.addAllEnemies(map, player);
+        PathFinder.setMap(map);
+        turnManager = new TurnManager();
+        playerPath = new Path();
+    }
+
     @Override
     public void render(GameContainer gameContainer, StateBasedGame stateBasedGame, Graphics graphics) throws SlickException {
         map.render(graphics, positionX, positionY, zoom);
         ItemManager.renderItems(graphics, positionX, positionY, zoom);
         player.render(graphics, positionX, positionY, zoom);
         enemyManager.render(graphics, positionX, positionY, zoom);
-        GUI.render(graphics, player, positionX, positionY, zoom);
+        GUI.render(graphics, player, positionX, positionY, zoom, difficulty);
         ItemManager.playerWeapon.image.draw(740, 542, 48, 48);
     }
 
@@ -62,27 +79,28 @@ public class Play extends BasicGameState {
     public void update(GameContainer gameContainer, StateBasedGame stateBasedGame, int i) throws SlickException {
         Input input = gameContainer.getInput();
 
+        GUI.update(player, stateBasedGame, gameContainer, turnManager);
+
         if(input.isKeyPressed(Input.KEY_ESCAPE)){
             stateBasedGame.enterState(0);
             stateBasedGame.getState(0).init(gameContainer, stateBasedGame);
         }
 
-        updatePlayer(input, stateBasedGame, gameContainer);
-        enemyManager.update(turnManager, player);
+        if(GUI.state != GUI.GUIState.DEAD){
+            updatePlayer(input, stateBasedGame, gameContainer);
+            enemyManager.update(turnManager, player);
+        }
 
         if(reloaded){
             GUI.state = GUI.GUIState.IN_GAME;
             reloaded = false;
         }
-
-        GUI.update(input, player);
     }
 
     private void updatePlayer(Input input, StateBasedGame sbg, GameContainer gc) throws SlickException{
         if(player.hp <= 0){
+            player.hp = 0;
             GUI.state = GUI.GUIState.DEAD;
-            sbg.enterState(0);
-            sbg.getState(0).init(gc, sbg);
         }
 
         if(!movementPhase){
@@ -96,9 +114,7 @@ public class Play extends BasicGameState {
                     movementPhase = true;
                 }
                 if(Math.abs(x - player.posX) <= 1 && Math.abs(y - player.posY) <= 1){
-                    movementPhase = ItemManager.useItem(ItemManager.playerWeapon, x, y, enemyManager);
-                    if(movementPhase == true)
-                        turnManager.addEnemyTurns(1);
+                    movementPhase = ItemManager.useItem(ItemManager.playerWeapon, x, y, enemyManager, player, turnManager);
                 }
             }
 
@@ -110,8 +126,14 @@ public class Play extends BasicGameState {
             }
 
             if(input.isKeyPressed(Input.KEY_SPACE)){
+                if(player.hp < player.maxHealth){
+                    Random r = new Random(System.nanoTime());
+                    if(r.nextFloat() < 0.1f){
+                        player.addHealth(1);
+                    }
+                }
                 turnManager.addEnemyTurns(1);
-                movementPhase = true;
+                movementPhase = false;
             }
         }else{
             Item i = ItemManager.getItem(player.posX, player.posY);
@@ -129,11 +151,20 @@ public class Play extends BasicGameState {
                         player.posY = n.y;
                         moveLastTime = System.nanoTime();
                         turnManager.addEnemyTurns(1);
+                        if(player.hp < player.maxHealth){
+                            Random r = new Random(System.nanoTime());
+                            if(r.nextFloat() < 0.1f){
+                                player.addHealth(1);
+                            }
+                        }
                     }else{
                         playerPath = new Path();
                         movementPhase = false;
                     }
                 }else{
+                    if(map.getTile(player.posX, player.posY) == TileMap.TileType.STAIRS_DOWN){
+                        nextLevel();
+                    }
                     movementPhase = false;
                 }
                 positionX = -player.posX*32+384;

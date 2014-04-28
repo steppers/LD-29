@@ -1,8 +1,10 @@
 package Core;
 
+import GUI.GUI;
 import Items.Item;
 import org.newdawn.slick.*;
 
+import GUI.GUIStatPopup;
 import java.util.ArrayList;
 
 /**
@@ -17,8 +19,8 @@ public class Player {
 
     public String playerClass = "Warrior";
 
-    public float hp = 20;
-    public float maxHealth = 20;
+    public float hp = 30;
+    public float maxHealth = 30;
     public float exp = 0;
     public float targetExp = 10;
 
@@ -34,6 +36,15 @@ public class Player {
                 image.getSubImage(16, 0, 16, 16),
                 image.getSubImage(32, 0, 16, 16),
                 image.getSubImage(48, 0, 16, 16)}, 250);
+    }
+
+    public void addHealth(int health){
+        if(hp < maxHealth){
+            hp += health;
+            GUI.addComponent(new GUIStatPopup(posX, posY - 1, "+"+health+" HP", Color.green), 1.5f);
+            if(hp > maxHealth)
+                hp = maxHealth;
+        }
     }
 
     public void addItem(Item item){

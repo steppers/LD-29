@@ -20,6 +20,8 @@ public class TileMap {
         WOOD,
         DOOR_STONE,
         DOOR_STONE_OPEN,
+        STAIRS_UP,
+        STAIRS_DOWN,
         FLOOR_STONE,
         FLOOR_WATER,
         FLOOR_WOOD,
@@ -78,6 +80,12 @@ public class TileMap {
                         break;
                     case FLOOR_DIRT:
                         g.drawImage(textures, (x*resolution*scale)+xOffset, (y*resolution*scale)+yOffset, (x*resolution*scale)+xOffset+resolution*scale, (y*resolution*scale)+yOffset+resolution*scale, 0, resolution, resolution, resolution+resolution);
+                        break;
+                    case STAIRS_UP:
+                        g.drawImage(textures, (x*resolution*scale)+xOffset, (y*resolution*scale)+yOffset, (x*resolution*scale)+xOffset+resolution*scale, (y*resolution*scale)+yOffset+resolution*scale, resolution, resolution, resolution*2, resolution+resolution);
+                        break;
+                    case STAIRS_DOWN:
+                        g.drawImage(textures, (x*resolution*scale)+xOffset, (y*resolution*scale)+yOffset, (x*resolution*scale)+xOffset+resolution*scale, (y*resolution*scale)+yOffset+resolution*scale, resolution*2, resolution, resolution*3, resolution+resolution);
                         break;
                 }
             }

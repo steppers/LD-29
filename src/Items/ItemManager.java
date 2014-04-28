@@ -1,5 +1,7 @@
-package Core;
+package Items;
 
+import Core.Player;
+import Core.TurnManager;
 import Enemies.Enemy;
 import Enemies.EnemyManager;
 import GUI.GUI;
@@ -19,18 +21,22 @@ public class ItemManager {
 
     public static ArrayList<Item> levelItems = new ArrayList<Item>();
     public static ArrayList<Item> inventoryItems = new ArrayList<Item>();
-    public static Weapon playerWeapon = new Sword(0, 0, 5, 0, 1, 0);
+    public static Weapon playerWeapon = new Dagger(0, 0, 3, 0, 1, 0);
     public static final int maxInventory = 18;
 
-    public static boolean useItem(Item item, int x, int y, EnemyManager em){
+    public static boolean useItem(Item item, int x, int y, EnemyManager em, Player player, TurnManager tm){
         if(item == playerWeapon){
             Enemy e = em.getEnemy(x, y);
             if(e != null){
                 e.stats.HP -= playerWeapon.stats.Attack;
                 GUI.addComponent(new GUIStatPopup(e.posX, e.posY-1,"-"+playerWeapon.stats.Attack, Color.orange), 1.5f);
                 em.getEnemy(x, y).state = Enemy.AIState.ATTACKING;
-                if(e.stats.HP <= 0)
+                if(e.stats.HP <= 0){
+                    GUI.addComponent(new GUIStatPopup(player.posX, player.posY-1,"+"+em.getEnemy(x, y).exp+" XP", Color.green), 1.5f);
+                    player.exp += em.getEnemy(x, y).exp;
                     em.removeEnemy(e);
+                }
+                tm.addEnemyTurns(1);
                 return false;
             }
             return true;

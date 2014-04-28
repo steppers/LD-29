@@ -7,15 +7,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="43026df8-6e1a-4247-88bc-b4fec99e6a92" name="Default" comment="">
-      <change type="MOVED" beforePath="C:\Users\Ollie\Desktop\LD-29\src\Core\GUI.java" afterPath="$PROJECT_DIR$/src/GUI/GUI.java" />
+      <change type="MOVED" beforePath="C:\Users\Ollie\Desktop\LD-29\src\Core\ItemManager.java" afterPath="$PROJECT_DIR$/src/Items/ItemManager.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/tex/GUI.png" afterPath="$PROJECT_DIR$/res/tex/GUI.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/tex/Menu.png" afterPath="$PROJECT_DIR$/res/tex/Menu.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/tex/tiles.png" afterPath="$PROJECT_DIR$/res/tex/tiles.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Core/DungeonGenerator.java" afterPath="$PROJECT_DIR$/src/Core/DungeonGenerator.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Enemies/Enemy.java" afterPath="$PROJECT_DIR$/src/Enemies/Enemy.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GUI/GUI.java" afterPath="$PROJECT_DIR$/src/GUI/GUI.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Core/Game.java" afterPath="$PROJECT_DIR$/src/Core/Game.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Core/ItemManager.java" afterPath="$PROJECT_DIR$/src/Core/ItemManager.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Items/Item.java" afterPath="$PROJECT_DIR$/src/Items/Item.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Core/Menu.java" afterPath="$PROJECT_DIR$/src/Core/Menu.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/PathFinding/Path.java" afterPath="$PROJECT_DIR$/src/PathFinding/Path.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Core/Play.java" afterPath="$PROJECT_DIR$/src/Core/Play.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Core/Player.java" afterPath="$PROJECT_DIR$/src/Core/Player.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Enemies/Slime.java" afterPath="$PROJECT_DIR$/src/Enemies/Slime.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Core/TileMap.java" afterPath="$PROJECT_DIR$/src/Core/TileMap.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="LUDUMDARE.iws" />
@@ -71,113 +76,6 @@
       </breakpoint>
     </breakpoint_any>
     <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
-    <line_breakpoints>
-      <breakpoint url="file://$PROJECT_DIR$/src/Core/ItemManager.java" line="46" class="Core.ItemManager" package="Core">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="REMOVE_AFTER_HIT" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/Core/ItemManager.java" line="49" class="Core.ItemManager" package="Core">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="REMOVE_AFTER_HIT" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/Core/ItemManager.java" line="51" class="Core.ItemManager" package="Core">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="REMOVE_AFTER_HIT" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/GUI/GUI.java" line="65" class="GUI.GUI" package="GUI">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="REMOVE_AFTER_HIT" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/Core/ItemManager.java" line="42" class="Core.ItemManager" package="Core">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="REMOVE_AFTER_HIT" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/GUI/GUI.java" line="62" class="GUI.GUI" package="GUI">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="REMOVE_AFTER_HIT" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/GUI/GUI.java" line="64" class="GUI.GUI" package="GUI">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="REMOVE_AFTER_HIT" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-    </line_breakpoints>
     <breakpoint_rules />
     <ui_properties />
   </component>
@@ -187,13 +85,12 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Play.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Core/Play.java">
+      <file leaf-file-name="Slime.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Enemies/Slime.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="125" column="52" selection-start="4504" selection-end="4504" vertical-scroll-proportion="0.0" vertical-offset="1482" max-vertical-offset="2516">
+            <state line="53" column="22" selection-start="1831" selection-end="1831" vertical-scroll-proportion="0.0" vertical-offset="640" max-vertical-offset="1054">
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="method#getID#0;class#Play#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -202,89 +99,8 @@
       <file leaf-file-name="Menu.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Core/Menu.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="68" column="30" selection-start="2376" selection-end="2376" vertical-scroll-proportion="0.0" vertical-offset="1015" max-vertical-offset="1717">
+            <state line="49" column="53" selection-start="1535" selection-end="1535" vertical-scroll-proportion="0.0" vertical-offset="1219" max-vertical-offset="1734">
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="EnemyManager.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Enemies/EnemyManager.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="31" column="13" selection-start="786" selection-end="786" vertical-scroll-proportion="0.0" vertical-offset="368" max-vertical-offset="1547">
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#403#410#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ItemManager.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Core/ItemManager.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="58" column="19" selection-start="1904" selection-end="1904" vertical-scroll-proportion="0.0" vertical-offset="657" max-vertical-offset="1530">
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#393#399#0" expanded="true" />
-                <element signature="e#467#473#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Slime.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Enemies/Slime.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="22" column="53" selection-start="583" selection-end="583" vertical-scroll-proportion="0.0" vertical-offset="197" max-vertical-offset="561">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GUI.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/GUI/GUI.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="62" column="42" selection-start="1889" selection-end="1889" vertical-scroll-proportion="0.0" vertical-offset="1632" max-vertical-offset="2703">
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#490#504#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Object.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Core/Object.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="20" column="85" selection-start="426" selection-end="467" vertical-scroll-proportion="0.0" vertical-offset="147" max-vertical-offset="578">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GUIStatPopup.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/GUI/GUIStatPopup.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="10" column="24" selection-start="196" selection-end="196" vertical-scroll-proportion="0.0" vertical-offset="130" max-vertical-offset="544">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GUIComponent.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/GUI/GUIComponent.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="15" column="47" selection-start="300" selection-end="300" vertical-scroll-proportion="0.8173077" vertical-offset="0" max-vertical-offset="510">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -292,7 +108,7 @@
       <file leaf-file-name="Enemy.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Enemies/Enemy.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="62" column="60" selection-start="1488" selection-end="1488" vertical-scroll-proportion="0.0" vertical-offset="736" max-vertical-offset="1411">
+            <state line="183" column="114" selection-start="6284" selection-end="6386" vertical-scroll-proportion="0.0" vertical-offset="980" max-vertical-offset="1462">
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#setImage#0;class#Enemy#0" expanded="false" />
@@ -301,6 +117,93 @@
                 <element signature="method#updateFollowing#0;class#Enemy#0" expanded="false" />
                 <element signature="method#updateSleeping#0;class#Enemy#0" expanded="false" />
                 <element signature="method#render#0;class#Enemy#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Play.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Core/Play.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="103" column="9" selection-start="3431" selection-end="3431" vertical-scroll-proportion="0.0" vertical-offset="1564" max-vertical-offset="3043">
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="method#getID#0;class#Play#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="EnemyManager.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Enemies/EnemyManager.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="31" column="13" selection-start="786" selection-end="786" vertical-scroll-proportion="0.0" vertical-offset="266" max-vertical-offset="1547">
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#403#410#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Player.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Core/Player.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="43" column="61" selection-start="1181" selection-end="1181" vertical-scroll-proportion="0.0" vertical-offset="612" max-vertical-offset="1428">
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#273#279#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GUI.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/GUI/GUI.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="156" column="49" selection-start="5295" selection-end="5295" vertical-scroll-proportion="0.5608974" vertical-offset="2477" max-vertical-offset="3230">
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#663#677#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ItemManager.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Items/ItemManager.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="29" column="26" selection-start="850" selection-end="850" vertical-scroll-proportion="0.0" vertical-offset="408" max-vertical-offset="1632">
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#439#445#0" expanded="true" />
+                <element signature="e#513#519#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DungeonGenerator.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Core/DungeonGenerator.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="55" column="26" selection-start="1647" selection-end="1647" vertical-scroll-proportion="0.0" vertical-offset="544" max-vertical-offset="1615">
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="method#genCorridor#0;class#DungeonGenerator#0" expanded="false" />
+                <element signature="method#genRoom#0;class#DungeonGenerator#0" expanded="false" />
+                <element signature="method#isEmpty#0;class#DungeonGenerator#0" expanded="false" />
+                <element signature="method#findWall#0;class#DungeonGenerator#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Object.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Core/Object.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="15" column="19" selection-start="310" selection-end="310" vertical-scroll-proportion="0.0" vertical-offset="147" max-vertical-offset="578">
+              <folding>
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -330,7 +233,6 @@
         <option value="$PROJECT_DIR$/GDD.txt" />
         <option value="$PROJECT_DIR$/src/Core/Tile.java" />
         <option value="$PROJECT_DIR$/src/Core/Config.java" />
-        <option value="$PROJECT_DIR$/src/Core/Game.java" />
         <option value="$PROJECT_DIR$/src/Core/TurnManager.java" />
         <option value="$PROJECT_DIR$/src/Core/Item.java" />
         <option value="$PROJECT_DIR$/src/Core/EnemyManager.java" />
@@ -339,24 +241,30 @@
         <option value="$PROJECT_DIR$/src/Core/CellSystem.java" />
         <option value="$PROJECT_DIR$/src/PathFinding/GridPos.java" />
         <option value="$PROJECT_DIR$/src/PathFinding/Node.java" />
-        <option value="$PROJECT_DIR$/src/Core/DungeonGenerator.java" />
-        <option value="$PROJECT_DIR$/src/Core/TileMap.java" />
-        <option value="$PROJECT_DIR$/src/Core/Player.java" />
         <option value="$PROJECT_DIR$/src/PathFinding/PathFinder.java" />
         <option value="$PROJECT_DIR$/src/Items/Sword.java" />
         <option value="$PROJECT_DIR$/src/Items/Weapon.java" />
         <option value="$PROJECT_DIR$/src/Core/Cell.java" />
-        <option value="$PROJECT_DIR$/src/Items/Item.java" />
         <option value="$PROJECT_DIR$/src/Core/Object.java" />
         <option value="$PROJECT_DIR$/src/Enemies/EnemyManager.java" />
         <option value="$PROJECT_DIR$/src/PathFinding/Path.java" />
         <option value="$PROJECT_DIR$/src/Core/GUI.java" />
-        <option value="$PROJECT_DIR$/src/Enemies/Slime.java" />
         <option value="$PROJECT_DIR$/src/GUI/GUIStatPopup.java" />
         <option value="$PROJECT_DIR$/src/GUI/GUIComponent.java" />
-        <option value="$PROJECT_DIR$/src/Core/Menu.java" />
-        <option value="$PROJECT_DIR$/src/Enemies/Enemy.java" />
         <option value="$PROJECT_DIR$/src/Core/ItemManager.java" />
+        <option value="$PROJECT_DIR$/src/Items/Item.java" />
+        <option value="$PROJECT_DIR$/src/Core/DungeonGenerator.java" />
+        <option value="$PROJECT_DIR$/src/Core/TileMap.java" />
+        <option value="$PROJECT_DIR$/src/Items/Longsword.java" />
+        <option value="$PROJECT_DIR$/src/Items/Dagger.java" />
+        <option value="$PROJECT_DIR$/src/Items/Potion.java" />
+        <option value="$PROJECT_DIR$/src/Enemies/Slime.java" />
+        <option value="$PROJECT_DIR$/src/Items/HealthPotion.java" />
+        <option value="$PROJECT_DIR$/src/Items/ItemManager.java" />
+        <option value="$PROJECT_DIR$/src/Enemies/Enemy.java" />
+        <option value="$PROJECT_DIR$/src/Core/Player.java" />
+        <option value="$PROJECT_DIR$/src/Core/Game.java" />
+        <option value="$PROJECT_DIR$/src/Core/Menu.java" />
         <option value="$PROJECT_DIR$/src/Core/Play.java" />
         <option value="$PROJECT_DIR$/src/GUI/GUI.java" />
       </list>
@@ -520,6 +428,20 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="tex" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="LUDUMDARE" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="LD-29" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="res" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -936,13 +858,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Core/Game.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="43" column="64" selection-start="959" selection-end="959" vertical-scroll-proportion="0.0" vertical-offset="493" max-vertical-offset="969">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Core/Ornament.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="5" column="21" selection-start="77" selection-end="77" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="221">
@@ -978,59 +893,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Core/DungeonGenerator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="258" column="25" selection-start="9790" selection-end="9790" vertical-scroll-proportion="0.44816053" vertical-offset="4252" max-vertical-offset="4896">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/PathFinding/PathFinder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="112" column="50" selection-start="3754" selection-end="3754" vertical-scroll-proportion="0.31690142" vertical-offset="1724" max-vertical-offset="3638">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Core/TileMap.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="92" column="64" selection-start="4519" selection-end="4519" vertical-scroll-proportion="0.38020834" vertical-offset="1311" max-vertical-offset="1887">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Core/Player.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="33" selection-start="634" selection-end="634" vertical-scroll-proportion="0.0" vertical-offset="306" max-vertical-offset="1241">
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#232#238#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Items/Sword.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="54" selection-start="325" selection-end="325" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="442">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Core/CellSystem.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="30" selection-start="251" selection-end="251" vertical-scroll-proportion="0.0" vertical-offset="102" max-vertical-offset="476">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Core/Cell.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="4" column="18" selection-start="62" selection-end="62" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="221">
@@ -1045,22 +907,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Items/Weapon.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="33" selection-start="142" selection-end="142" vertical-scroll-proportion="0.4084084" vertical-offset="0" max-vertical-offset="408">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Items/Item.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="38" selection-start="219" selection-end="219" vertical-scroll-proportion="0.0" vertical-offset="75" max-vertical-offset="408">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/PathFinding/Path.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="25" column="27" selection-start="524" selection-end="524" vertical-scroll-proportion="0.0" vertical-offset="126" max-vertical-offset="578">
@@ -1070,9 +916,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Core/Object.java">
+    <entry file="file://$PROJECT_DIR$/src/GUI/GUIComponent.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="85" selection-start="426" selection-end="467" vertical-scroll-proportion="0.0" vertical-offset="147" max-vertical-offset="578">
+        <state line="11" column="23" selection-start="196" selection-end="196" vertical-scroll-proportion="0.25525525" vertical-offset="102" max-vertical-offset="510">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1081,32 +927,152 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/GUI/GUIStatPopup.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="24" selection-start="196" selection-end="196" vertical-scroll-proportion="0.0" vertical-offset="130" max-vertical-offset="544">
+        <state line="10" column="24" selection-start="196" selection-end="196" vertical-scroll-proportion="0.12012012" vertical-offset="130" max-vertical-offset="544">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Core/Menu.java">
+    <entry file="file://$PROJECT_DIR$/src/Core/CellSystem.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="68" column="30" selection-start="2376" selection-end="2376" vertical-scroll-proportion="0.0" vertical-offset="1015" max-vertical-offset="1717">
+        <state line="13" column="30" selection-start="251" selection-end="251" vertical-scroll-proportion="0.0" vertical-offset="102" max-vertical-offset="476">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Enemies/Slime.java">
+    <entry file="file://$PROJECT_DIR$/src/PathFinding/PathFinder.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="53" selection-start="583" selection-end="583" vertical-scroll-proportion="0.0" vertical-offset="197" max-vertical-offset="561">
+        <state line="53" column="59" selection-start="1537" selection-end="1537" vertical-scroll-proportion="0.0" vertical-offset="355" max-vertical-offset="3638">
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Core/TileMap.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="87" column="224" selection-start="4854" selection-end="4854" vertical-scroll-proportion="0.0" vertical-offset="1213" max-vertical-offset="2023">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Items/Sword.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="4" selection-start="190" selection-end="541" vertical-scroll-proportion="0.0" vertical-offset="130" max-vertical-offset="442">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Items/Weapon.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="4" selection-start="148" selection-end="378" vertical-scroll-proportion="0.0" vertical-offset="96" max-vertical-offset="408">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Items/Item.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="21" column="28" selection-start="586" selection-end="586" vertical-scroll-proportion="0.0" vertical-offset="102" max-vertical-offset="544">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Core/Object.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="15" column="19" selection-start="310" selection-end="310" vertical-scroll-proportion="0.0" vertical-offset="147" max-vertical-offset="578">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Items/HealthPotion.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="56" selection-start="322" selection-end="322" vertical-scroll-proportion="0.4903846" vertical-offset="17" max-vertical-offset="425">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Items/Potion.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="20" selection-start="315" selection-end="315" vertical-scroll-proportion="0.5105105" vertical-offset="68" max-vertical-offset="442">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Items/Dagger.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="4" selection-start="173" selection-end="526" vertical-scroll-proportion="0.35735735" vertical-offset="51" max-vertical-offset="442">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Items/Longsword.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="38" selection-start="169" selection-end="169" vertical-scroll-proportion="0.25525525" vertical-offset="51" max-vertical-offset="442">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Core/DungeonGenerator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="55" column="26" selection-start="1647" selection-end="1647" vertical-scroll-proportion="0.0" vertical-offset="646" max-vertical-offset="1615">
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#genCorridor#0;class#DungeonGenerator#0" expanded="false" />
+            <element signature="method#genRoom#0;class#DungeonGenerator#0" expanded="false" />
+            <element signature="method#isEmpty#0;class#DungeonGenerator#0" expanded="false" />
+            <element signature="method#findWall#0;class#DungeonGenerator#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Items/ItemManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="29" column="26" selection-start="850" selection-end="850" vertical-scroll-proportion="0.0" vertical-offset="408" max-vertical-offset="1632">
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#439#445#0" expanded="true" />
+            <element signature="e#513#519#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Core/Game.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="17" column="36" selection-start="334" selection-end="334" vertical-scroll-proportion="0.0" vertical-offset="85" max-vertical-offset="969">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Enemies/EnemyManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="31" column="13" selection-start="786" selection-end="786" vertical-scroll-proportion="0.0" vertical-offset="266" max-vertical-offset="1547">
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#403#410#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Enemies/Enemy.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="62" column="60" selection-start="1488" selection-end="1488" vertical-scroll-proportion="0.0" vertical-offset="736" max-vertical-offset="1411">
+        <state line="183" column="114" selection-start="6284" selection-end="6386" vertical-scroll-proportion="0.0" vertical-offset="980" max-vertical-offset="1462">
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#setImage#0;class#Enemy#0" expanded="false" />
@@ -1119,19 +1085,35 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Enemies/EnemyManager.java">
+    <entry file="file://$PROJECT_DIR$/src/Enemies/Slime.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="31" column="13" selection-start="786" selection-end="786" vertical-scroll-proportion="0.0" vertical-offset="368" max-vertical-offset="1547">
+        <state line="53" column="22" selection-start="1831" selection-end="1831" vertical-scroll-proportion="0.0" vertical-offset="640" max-vertical-offset="1054">
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#403#410#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Core/Player.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="43" column="61" selection-start="1181" selection-end="1181" vertical-scroll-proportion="0.0" vertical-offset="612" max-vertical-offset="1428">
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#273#279#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Core/Menu.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="49" column="53" selection-start="1535" selection-end="1535" vertical-scroll-proportion="0.0" vertical-offset="1219" max-vertical-offset="1734">
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Core/Play.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="125" column="52" selection-start="4504" selection-end="4504" vertical-scroll-proportion="0.0" vertical-offset="1482" max-vertical-offset="2516">
+        <state line="103" column="9" selection-start="3431" selection-end="3431" vertical-scroll-proportion="0.0" vertical-offset="1564" max-vertical-offset="3043">
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#getID#0;class#Play#0" expanded="false" />
@@ -1139,32 +1121,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Core/ItemManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="58" column="19" selection-start="1904" selection-end="1904" vertical-scroll-proportion="0.0" vertical-offset="657" max-vertical-offset="1530">
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#393#399#0" expanded="true" />
-            <element signature="e#467#473#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/GUI/GUI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="62" column="42" selection-start="1889" selection-end="1889" vertical-scroll-proportion="0.0" vertical-offset="1632" max-vertical-offset="2703">
+        <state line="156" column="49" selection-start="5295" selection-end="5295" vertical-scroll-proportion="0.5608974" vertical-offset="2477" max-vertical-offset="3230">
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#490#504#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/GUI/GUIComponent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="47" selection-start="300" selection-end="300" vertical-scroll-proportion="0.8173077" vertical-offset="0" max-vertical-offset="510">
-          <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#663#677#0" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -1,5 +1,7 @@
 package Core;
 
+import PathFinding.Path;
+import PathFinding.PathFinder;
 import org.newdawn.slick.geom.Rectangle;
 
 import java.util.Random;
@@ -18,6 +20,8 @@ public class DungeonGenerator {
     private static TileMap.TileType wall;
     private static TileMap.TileType door;
     private static TileMap.TileType openDoor;
+    private static TileMap.TileType StairsUp;
+    private static TileMap.TileType StairsDown;
 
     public enum DungeonType{
         PRISON,
@@ -40,6 +44,20 @@ public class DungeonGenerator {
         genDungeon();
 
         map.setTiles(tiles);
+        PathFinder.setMap(map);
+        int x, y;
+        while(true){
+            x = rand.nextInt(tiles.length);
+            y = rand.nextInt(tiles[0].length);
+            if(tiles[x][y] == TileMap.TileType.FLOOR_STONE){
+                Path p = PathFinder.findPath(20, 17, x, y, false);
+                if(p.length() > 30){
+                    tiles[x][y] = TileMap.TileType.STAIRS_DOWN;
+                    break;
+                }
+            }
+        }
+        map.setTiles(tiles);
         return map;
     }
 
@@ -57,6 +75,8 @@ public class DungeonGenerator {
                 genRoom(pos[0], pos[1], rand.nextInt(6)+2, rand.nextInt(6)+2, pos[2], true);
             }
         }
+
+        tiles[20][17] = TileMap.TileType.STAIRS_UP;
     }
 
     private static void genCorridor(int posX, int posY, int len, int dir){

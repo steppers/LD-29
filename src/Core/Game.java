@@ -14,8 +14,8 @@ public class Game extends StateBasedGame
     static int height = 600;
     static int width = 800;
     static boolean fullscreen = false;
-    static boolean showFPS = true;
-    static final String title = "LD-29";
+    static boolean showFPS = false;
+    static final String title = "...Beneath...";
     static int fpsLimit = 60;
     
     static final int menu = 0;

@@ -41,7 +41,8 @@ public class Menu extends BasicGameState {
 
     @Override
     public void render(GameContainer gameContainer, StateBasedGame stateBasedGame, Graphics graphics) throws SlickException {
-        GUI.render(graphics, null, 0, 0, 1);
+        GUI.state = GUI.GUIState.MAIN_MENU;
+        GUI.render(graphics, null, 0, 0, 1, 1);
         switch (state){
             case MAIN:
                 graphics.drawString(Play, 390, 400);
@@ -66,7 +67,7 @@ public class Menu extends BasicGameState {
     public void update(GameContainer gameContainer, StateBasedGame stateBasedGame, int i) throws SlickException {
         Input input = gameContainer.getInput();
         Vector2f mousePos = new Vector2f(input.getMouseX(), input.getMouseY());
-        GUI.update(input, null);
+        GUI.update(null, stateBasedGame, gameContainer, null);
 
         switch (state){
             case MAIN:

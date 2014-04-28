@@ -4,6 +4,7 @@ import Core.*;
 import GUI.GUI;
 import GUI.GUIStatPopup;
 import Items.Item;
+import Items.ItemManager;
 import PathFinding.GridPos;
 import PathFinding.Path;
 import PathFinding.PathFinder;
@@ -39,6 +40,7 @@ public class Enemy {
     public int lastX, lastY;
     public Path currentPath;
 
+    public int exp;
     public int moveSpeed;
 
     public Enemy(int posX, int posY, float difficulty){
@@ -46,6 +48,7 @@ public class Enemy {
         this.posY = posY;
         r = new Random(System.nanoTime());
         state = AIState.IDLE;
+        items = new Item[0];
     }
 
     public void setImage(Image i){
@@ -150,13 +153,13 @@ public class Enemy {
             }
         }
         currentPath = PathFinder.findPath(posX, posY, player.posX, player.posY, false);
-        if(currentPath.length() < 7)
+        if(currentPath.length() < 5)
             state = AIState.FOLLOWING;
     }
 
     private void updateFollowing(TileMap map, Player player) {
         currentPath = PathFinder.findPath(posX, posY, player.posX, player.posY, false);
-        if(currentPath.length() > 8)
+        if(currentPath.length() > 7)
             state = AIState.IDLE;
         if(currentPath.length() < 2)
             state = AIState.ATTACKING;
