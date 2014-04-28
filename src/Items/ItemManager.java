@@ -25,7 +25,7 @@ public class ItemManager {
     public static ArrayList<Item> levelItems = new ArrayList<Item>();
     public static ArrayList<Item> inventoryItems = new ArrayList<Item>();
     public static Item playerWeapon = new Dagger(0, 0, 3, 1, true);
-    public static Item playerArmour = new Shirt(0, 0, 2, 2, true);
+    public static Item playerArmour = new Shirt(0, 0, 1, 1, true);
     public static Item playerJewel1 = null;
     public static Item playerJewel2 = null;
     public static final int maxInventory = 16;
@@ -37,11 +37,12 @@ public class ItemManager {
             Enemy e = em.getEnemy(x, y);
             if(e != null){
                 if(playerWeapon != null){
-                    int damage = r.nextInt(playerWeapon.stats.Attack)+playerWeapon.stats.Attack/2;
                     float dodge = r.nextInt(e.stats.Evade+7);
                     if(dodge < 8){
+                        int damage = r.nextInt(Math.abs(playerWeapon.stats.Attack - e.stats.Defense/2)+1)+playerWeapon.stats.Attack/2;
                         e.stats.HP -= damage;
                         GUI.addComponent(new GUIStatPopup(e.posX, e.posY-1,"-"+playerWeapon.stats.Attack, Color.orange), 1.5f);
+                        AudioBank.playEffect(AudioBank.Hit1);
                     }else{
                         GUI.addComponent(new GUIStatPopup(e.posX, e.posY-1,"Dodge", Color.orange), 1.5f);
                     }
@@ -51,18 +52,18 @@ public class ItemManager {
                     if(dodge < 4){
                         e.stats.HP -= damage;
                         GUI.addComponent(new GUIStatPopup(e.posX, e.posY-1,"-"+1, Color.orange), 1.5f);
+                        AudioBank.playEffect(AudioBank.Hit1);
                     }else{
                         GUI.addComponent(new GUIStatPopup(e.posX, e.posY-1,"Dodge", Color.orange), 1.5f);
                     }
                 }
                 em.getEnemy(x, y).state = Enemy.AIState.ATTACKING;
-                AudioBank.playEffect(AudioBank.Hit1);
                 if(e.stats.HP <= 0){
                     GUI.addComponent(new GUIStatPopup(player.posX, player.posY-1,"+"+em.getEnemy(x, y).exp+" XP", Color.green), 1.5f);
                     player.exp += em.getEnemy(x, y).exp;
                     em.removeEnemy(e);
                 }
-                tm.addEnemyTurns(1);
+                tm.addEnemyTurns(playerWeapon.stats.Speed);
                 return false;
             }
             return true;
@@ -137,6 +138,7 @@ public class ItemManager {
     }
 
     public static void DropItem(Item item, int x, int y){
+        item.isEquipped = false;
         inventoryItems.remove(item);
         item.x = x;
         item.y = y;

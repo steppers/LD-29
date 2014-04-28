@@ -33,7 +33,7 @@ public class Enemy {
     public int posX, posY;
     private Image image;
     private Animation anim;
-    private float difficulty = 1;
+    public float difficulty = 1;
     public Stats stats;
     public Item[] items;
 
@@ -181,9 +181,17 @@ public class Enemy {
             currentPath = PathFinder.findPath(posX, posY, player.posX, player.posY, false);
             state = AIState.FOLLOWING;
         }else{
-            GUI.addComponent(new GUIStatPopup(player.posX, player.posY - 1, "-" + stats.Attack, Color.red), 1.5f);
-            AudioBank.playEffect(AudioBank.Hit2);
-            player.hp -= stats.Attack;
+            float dodge = r.nextInt(ItemManager.playerArmour.stats.Evade+5);
+            if(dodge < 8){
+                int damage = r.nextInt(Math.abs(stats.Attack - ItemManager.playerArmour.stats.Defense/2)+1)+stats.Attack/2;
+                if(damage < 0)
+                    damage = 0;
+                player.hp -= damage;
+                GUI.addComponent(new GUIStatPopup(player.posX, player.posY - 1, "-" + damage, Color.red), 1.5f);
+                AudioBank.playEffect(AudioBank.Hit2);
+            }else{
+                GUI.addComponent(new GUIStatPopup(player.posX, player.posY - 1,"Dodge", Color.orange), 1.5f);
+            }
         }
     }
     private void updateSleeping(TileMap map, Player player) {

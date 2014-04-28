@@ -109,6 +109,11 @@ public class Play extends BasicGameState {
             GUI.state = GUI.GUIState.DEAD;
         }
 
+        if(player.exp >= player.targetExp){
+            player.targetExp *= 2;
+            //player.levelUp();
+        }
+
         if(GUI.state == GUI.GUIState.IN_GAME){
             if(!movementPhase){
                 if(input.isMousePressed(0)){

@@ -8,8 +8,10 @@ import Items.ItemManager;
 import Core.Player;
 import org.newdawn.slick.*;
 import org.newdawn.slick.geom.Rectangle;
+import org.newdawn.slick.openal.Audio;
 import org.newdawn.slick.state.StateBasedGame;
 
+import javax.sound.midi.Soundbank;
 import java.util.ArrayList;
 
 /**
@@ -244,7 +246,26 @@ public class GUI {
                                 ItemManager.Equip(selected);
                                 selected = null;
                             }
+                        }else if(selected.id == Item.HealthPotion){
+                            player.addHealth(selected.stats.HP);
+                            AudioBank.playEffect(AudioBank.Pickup1);
+                            if(--selected.quantity == 0){
+                                ItemManager.inventoryItems.remove(selected);
+                            }
+                            makeSelectedNull();
                         }
+                    }
+                    if(GUI.dropItem.contains(input.getMouseX(), input.getMouseY()) && selected != null){
+                        if(selected == ItemManager.playerWeapon)
+                            return;
+                        if(selected == ItemManager.playerArmour)
+                            return;
+                        if(selected == ItemManager.playerJewel1)
+                            return;
+                        if(selected == ItemManager.playerJewel2)
+                            return;
+                        ItemManager.DropItem(selected, player.posX, player.posY);
+                        makeSelectedNull();
                     }
                 }
                 break;
@@ -367,7 +388,11 @@ public class GUI {
         g.drawString("ATK:  " + selected.stats.Attack, 5, 200);
         g.drawString("DEF:  " + selected.stats.Defense, 5, 220);
         g.drawString("+HP:  " + selected.stats.HP, 5, 240);
-        g.drawString("SPD:  " + selected.stats.Speed, 5, 260);
+        if(selected.stats.Speed == 1){
+            g.drawString("SPD:  FAST", 5, 260);
+        }else{
+            g.drawString("SPD:  SLOW", 5, 260);
+        }
         g.drawString("EVA:  " + selected.stats.Evade, 5, 280);
     }
 
