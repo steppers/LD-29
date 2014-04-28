@@ -43,9 +43,9 @@ public class Play extends BasicGameState {
         player = new Player();
         player.setPos(20, 17);
         moveLastTime = System.nanoTime();
-        enemyManager = new EnemyManager(10, 1, map);
-        enemyManager.addAllEnemies(map, player);
         PathFinder.setMap(map);
+        enemyManager = new EnemyManager(13, 1, map);
+        enemyManager.addAllEnemies(map, player);
         turnManager = new TurnManager();
         ItemManager.levelItems.clear();
         FogManager.init(40, 40);
@@ -60,7 +60,7 @@ public class Play extends BasicGameState {
         map = DungeonGenerator.CreateDungeon(40, 40, DungeonGenerator.DungeonType.PRISON, difficulty);
         player.setPos(20, 17);
         moveLastTime = System.nanoTime();
-        enemyManager = new EnemyManager(10, difficulty, map);
+        enemyManager = new EnemyManager(13, difficulty, map);
         enemyManager.addAllEnemies(map, player);
         PathFinder.setMap(map);
         turnManager = new TurnManager();

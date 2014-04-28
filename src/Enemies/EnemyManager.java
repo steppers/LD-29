@@ -1,6 +1,7 @@
 package Enemies;
 
 import Core.*;
+import PathFinding.PathFinder;
 import org.newdawn.slick.Graphics;
 
 import java.util.ArrayList;
@@ -44,10 +45,12 @@ public class EnemyManager {
             int x = r.nextInt(map.width);
             int y = r.nextInt(map.height);
             if(map.getTile(x, y) == TileMap.TileType.FLOOR_STONE){
-                if(x != player.posX && y != player.posY && !CellSystem.cells[x][y].enemy){
-                    enemies.add(new Slime(x, y, difficulty));
-                    CellSystem.cells[x][y].enemy = true;
-                    return;
+                if(PathFinder.findPath(x, y, player.posX, player.posY, false).length() > 9){
+                    if(x != player.posX && y != player.posY && !CellSystem.cells[x][y].enemy){
+                        enemies.add(new Slime(x, y, difficulty));
+                        CellSystem.cells[x][y].enemy = true;
+                        return;
+                    }
                 }
             }
         }

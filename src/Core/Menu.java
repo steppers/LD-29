@@ -57,7 +57,7 @@ public class Menu extends BasicGameState {
             case ABOUT:
                 graphics.drawString("Created by Steppers", 320, 430);
                 graphics.drawString("for the Ludumdare-29", 320, 445);
-                graphics.drawString("48-hour competition.", 320, 460);
+                graphics.drawString("72-hour Game Jam.", 320, 460);
                 graphics.drawString("<- Back", 375, 490);
                 break;
         }
