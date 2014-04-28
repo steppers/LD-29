@@ -7,21 +7,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="43026df8-6e1a-4247-88bc-b4fec99e6a92" name="Default" comment="">
-      <change type="MOVED" beforePath="C:\Users\Ollie\Desktop\LD-29\src\Core\ItemManager.java" afterPath="$PROJECT_DIR$/src/Items/ItemManager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/tex/GUI.png" afterPath="$PROJECT_DIR$/res/tex/GUI.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/tex/Menu.png" afterPath="$PROJECT_DIR$/res/tex/Menu.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/tex/tiles.png" afterPath="$PROJECT_DIR$/res/tex/tiles.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Core/DungeonGenerator.java" afterPath="$PROJECT_DIR$/src/Core/DungeonGenerator.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Enemies/Enemy.java" afterPath="$PROJECT_DIR$/src/Enemies/Enemy.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GUI/GUI.java" afterPath="$PROJECT_DIR$/src/GUI/GUI.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Core/Game.java" afterPath="$PROJECT_DIR$/src/Core/Game.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Items/Item.java" afterPath="$PROJECT_DIR$/src/Items/Item.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Core/Menu.java" afterPath="$PROJECT_DIR$/src/Core/Menu.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Core/Play.java" afterPath="$PROJECT_DIR$/src/Core/Play.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Core/Player.java" afterPath="$PROJECT_DIR$/src/Core/Player.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Enemies/Slime.java" afterPath="$PROJECT_DIR$/src/Enemies/Slime.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Core/TileMap.java" afterPath="$PROJECT_DIR$/src/Core/TileMap.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="LUDUMDARE.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -99,7 +85,7 @@
       <file leaf-file-name="Menu.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Core/Menu.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="49" column="53" selection-start="1535" selection-end="1535" vertical-scroll-proportion="0.0" vertical-offset="1219" max-vertical-offset="1734">
+            <state line="80" column="66" selection-start="2968" selection-end="2968" vertical-scroll-proportion="0.0" vertical-offset="1166" max-vertical-offset="1734">
               <folding />
             </state>
           </provider>
@@ -161,7 +147,7 @@
       <file leaf-file-name="GUI.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/GUI/GUI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="156" column="49" selection-start="5295" selection-end="5295" vertical-scroll-proportion="0.5608974" vertical-offset="2477" max-vertical-offset="3230">
+            <state line="151" column="37" selection-start="5089" selection-end="5089" vertical-scroll-proportion="0.61538464" vertical-offset="2375" max-vertical-offset="3230">
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#663#677#0" expanded="true" />
@@ -719,7 +705,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3284553" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3284553" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.41626015" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.41626015" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3284553" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3284553" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -1104,13 +1090,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Core/Menu.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="49" column="53" selection-start="1535" selection-end="1535" vertical-scroll-proportion="0.0" vertical-offset="1219" max-vertical-offset="1734">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Core/Play.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="103" column="9" selection-start="3431" selection-end="3431" vertical-scroll-proportion="0.0" vertical-offset="1564" max-vertical-offset="3043">
@@ -1121,9 +1100,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Core/Menu.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="80" column="66" selection-start="2968" selection-end="2968" vertical-scroll-proportion="0.0" vertical-offset="1166" max-vertical-offset="1734">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/GUI/GUI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="156" column="49" selection-start="5295" selection-end="5295" vertical-scroll-proportion="0.5608974" vertical-offset="2477" max-vertical-offset="3230">
+        <state line="151" column="37" selection-start="5089" selection-end="5089" vertical-scroll-proportion="0.61538464" vertical-offset="2375" max-vertical-offset="3230">
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#663#677#0" expanded="true" />

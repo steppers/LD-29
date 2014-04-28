@@ -149,7 +149,7 @@ public class GUI {
         }
 
         //tr
-        g.fillRoundRect(370, -12, 390, 64, 12);
+        g.fillRoundRect(370, -12, 442, 64, 12);
         g.setColor(Color.lightGray);
         g.fillRect(520, 9, 270, 10);
         g.fillRect(520, 29, 270, 10);
