@@ -7,11 +7,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="43026df8-6e1a-4247-88bc-b4fec99e6a92" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Enemies/Enemy.java" afterPath="$PROJECT_DIR$/src/Enemies/Enemy.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GUI/GUI.java" afterPath="$PROJECT_DIR$/src/GUI/GUI.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Items/ItemManager.java" afterPath="$PROJECT_DIR$/src/Items/ItemManager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Core/Play.java" afterPath="$PROJECT_DIR$/src/Core/Play.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Enemies/Slime.java" afterPath="$PROJECT_DIR$/src/Enemies/Slime.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="LUDUMDARE.iws" />
@@ -137,7 +132,7 @@
       <file leaf-file-name="GUI.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/GUI/GUI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="260" column="64" selection-start="12533" selection-end="12533" vertical-scroll-proportion="0.4551282" vertical-offset="4278" max-vertical-offset="7667">
+            <state line="259" column="35" selection-start="12468" selection-end="12468" vertical-scroll-proportion="0.40064102" vertical-offset="4278" max-vertical-offset="7667">
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#2391#2405#0" expanded="true" />
@@ -768,7 +763,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -777,7 +772,7 @@
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3284553" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.41626015" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.41626015" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3284553" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3284553" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -1196,7 +1191,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/GUI/GUI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="260" column="64" selection-start="12533" selection-end="12533" vertical-scroll-proportion="0.4551282" vertical-offset="4278" max-vertical-offset="7667">
+        <state line="259" column="35" selection-start="12468" selection-end="12468" vertical-scroll-proportion="0.40064102" vertical-offset="4278" max-vertical-offset="7667">
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#2391#2405#0" expanded="true" />
