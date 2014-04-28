@@ -1,22 +1,16 @@
 package Items.Potions;
 
-import Items.Potion;
-import org.newdawn.slick.Image;
-import org.newdawn.slick.SlickException;
+import Core.ImageBank;
 
 /**
  * Created by Ollie on 28/04/14.
  */
 public class HealthPotion extends Potion {
-    public HealthPotion(int HP, int maxHP, int Attack, int Defense, int Speed, int Evade) {
-        super(HP, maxHP, Attack, Defense, Speed, Evade);
+    public HealthPotion(int HP, int maxHP) {
+        super(HP, maxHP);
+        name = "Health Potion";
         id = HealthPotion;
-        try{
-            image = new Image("res/tex/ItemsTiles.png").getSubImage(48, 0, 16, 16);
-            image.setFilter(Image.FILTER_NEAREST);
-            image.setImageColor(0.7f, 0, 0);
-        }catch(SlickException e){
-            System.err.println("Error: Cannot load ItemTiles.png");
-        }
+        image = ImageBank.itemsTiles.getSubImage(48, 0, 16, 16);
+        image.setImageColor(0.7f, 0, 0);
     }
 }

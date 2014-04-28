@@ -73,27 +73,34 @@ public class Menu extends BasicGameState {
             case MAIN:
                 if(input.isMousePressed(0)){
                     if(playRect.contains(mousePos.x, mousePos.y)){
+                        AudioBank.playEffect(AudioBank.Select1);
                         stateBasedGame.enterState(11);
                         stateBasedGame.getState(11).init(gameContainer, stateBasedGame);
                     }
-                    if(optionsRect.contains(mousePos.x, mousePos.y))
-                        state = menuState.OPTIONS;
-                    if(aboutRect.contains(mousePos.x, mousePos.y))
-                        state = menuState.ABOUT;
-                    if(quitRect.contains(mousePos.x, mousePos.y))
-                        gameContainer.exit();
+                    if(optionsRect.contains(mousePos.x, mousePos.y)){
+                        AudioBank.playEffect(AudioBank.Select1);
+                        state = menuState.OPTIONS;}
+                    if(aboutRect.contains(mousePos.x, mousePos.y)){
+                        AudioBank.playEffect(AudioBank.Select1);
+                        state = menuState.ABOUT;}
+                    if(quitRect.contains(mousePos.x, mousePos.y)){
+                        AudioBank.playEffect(AudioBank.Select1);
+                        gameContainer.exit();}
                 }
                 break;
             case OPTIONS:
                 if(input.isMousePressed(0)){
-                    if(quitRect.contains(mousePos.x, mousePos.y))
+                    if(quitRect.contains(mousePos.x, mousePos.y)){
+                        AudioBank.playEffect(AudioBank.Select1);
                         state = menuState.MAIN;
+                    }
                 }
                 break;
             case ABOUT:
                 if(input.isMousePressed(0)){
-                    if(quitRect.contains(mousePos.x, mousePos.y))
-                        state = menuState.MAIN;
+                    if(quitRect.contains(mousePos.x, mousePos.y)){
+                        AudioBank.playEffect(AudioBank.Select1);
+                        state = menuState.MAIN;}
                 }
                 break;
         }

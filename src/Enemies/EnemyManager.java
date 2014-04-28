@@ -1,9 +1,6 @@
 package Enemies;
 
-import Core.CellSystem;
-import Core.Player;
-import Core.TileMap;
-import Core.TurnManager;
+import Core.*;
 import org.newdawn.slick.Graphics;
 
 import java.util.ArrayList;
@@ -64,7 +61,8 @@ public class EnemyManager {
 
     public void render(Graphics g, float xOffset, float yOffset, float scale){
         for(Enemy e : enemies){
-            e.render(g, xOffset, yOffset, scale);
+            if(FogManager.fog[e.posX][e.posY] == 4)
+                e.render(g, xOffset, yOffset, scale);
         }
     }
 

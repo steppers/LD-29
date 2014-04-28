@@ -182,6 +182,7 @@ public class Enemy {
             state = AIState.FOLLOWING;
         }else{
             GUI.addComponent(new GUIStatPopup(player.posX, player.posY - 1, "-" + stats.Attack, Color.red), 1.5f);
+            AudioBank.playEffect(AudioBank.Hit2);
             player.hp -= stats.Attack;
         }
     }

@@ -1,18 +1,21 @@
 package Items;
 
+import Core.AudioBank;
 import Core.Player;
 import Core.TurnManager;
 import Enemies.Enemy;
 import Enemies.EnemyManager;
 import GUI.GUI;
 import GUI.GUIStatPopup;
-import Items.Item;
-import Items.Sword;
-import Items.Weapon;
+import Items.Armour.Armour;
+import Items.Armour.Shirt;
+import Items.Weapons.Dagger;
+import Items.Weapons.Weapon;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 /**
  * Created by Ollie on 27/04/14.
@@ -21,16 +24,39 @@ public class ItemManager {
 
     public static ArrayList<Item> levelItems = new ArrayList<Item>();
     public static ArrayList<Item> inventoryItems = new ArrayList<Item>();
-    public static Weapon playerWeapon = new Dagger(0, 0, 3, 0, 1, 0);
-    public static final int maxInventory = 18;
+    public static Item playerWeapon = new Dagger(0, 0, 3, 1, true);
+    public static Item playerArmour = new Shirt(0, 0, 2, 2, true);
+    public static Item playerJewel1 = null;
+    public static Item playerJewel2 = null;
+    public static final int maxInventory = 16;
+
+    private static Random r = new Random(System.nanoTime());
 
     public static boolean useItem(Item item, int x, int y, EnemyManager em, Player player, TurnManager tm){
         if(item == playerWeapon){
             Enemy e = em.getEnemy(x, y);
             if(e != null){
-                e.stats.HP -= playerWeapon.stats.Attack;
-                GUI.addComponent(new GUIStatPopup(e.posX, e.posY-1,"-"+playerWeapon.stats.Attack, Color.orange), 1.5f);
+                if(playerWeapon != null){
+                    int damage = r.nextInt(playerWeapon.stats.Attack)+playerWeapon.stats.Attack/2;
+                    float dodge = r.nextInt(e.stats.Evade+7);
+                    if(dodge < 8){
+                        e.stats.HP -= damage;
+                        GUI.addComponent(new GUIStatPopup(e.posX, e.posY-1,"-"+playerWeapon.stats.Attack, Color.orange), 1.5f);
+                    }else{
+                        GUI.addComponent(new GUIStatPopup(e.posX, e.posY-1,"Dodge", Color.orange), 1.5f);
+                    }
+                }else{
+                    int damage = r.nextInt(1)+1;
+                    float dodge = r.nextInt(e.stats.Evade+7);
+                    if(dodge < 4){
+                        e.stats.HP -= damage;
+                        GUI.addComponent(new GUIStatPopup(e.posX, e.posY-1,"-"+1, Color.orange), 1.5f);
+                    }else{
+                        GUI.addComponent(new GUIStatPopup(e.posX, e.posY-1,"Dodge", Color.orange), 1.5f);
+                    }
+                }
                 em.getEnemy(x, y).state = Enemy.AIState.ATTACKING;
+                AudioBank.playEffect(AudioBank.Hit1);
                 if(e.stats.HP <= 0){
                     GUI.addComponent(new GUIStatPopup(player.posX, player.posY-1,"+"+em.getEnemy(x, y).exp+" XP", Color.green), 1.5f);
                     player.exp += em.getEnemy(x, y).exp;
@@ -45,19 +71,69 @@ public class ItemManager {
     }
 
     public static void PickupItem(Item item){
-        if(inventoryItems.contains(item) && item.isStackable){
-            int i = inventoryItems.indexOf(item);
-            inventoryItems.get(i).quantity++;
-            levelItems.remove(item);
-        }else if(inventoryItems.contains(item) && inventoryItems.size() < maxInventory){
+        if(item.isStackable){
+            for(Item i : inventoryItems){
+                if(i.id == item.id){
+                    i.quantity++;
+                    levelItems.remove(item);
+                    AudioBank.playEffect(AudioBank.Pickup1);
+                    return;
+                }
+            }
+            if(inventoryItems.size() < maxInventory){
+                inventoryItems.add(item);
+                levelItems.remove(item);
+                AudioBank.playEffect(AudioBank.Pickup1);
+            }
+        }else if(inventoryItems.size() < maxInventory){
             inventoryItems.add(item);
             levelItems.remove(item);
+            AudioBank.playEffect(AudioBank.Pickup1);
         }else if(inventoryItems.size() >= maxInventory){
+            GUI.addComponent(new GUIStatPopup(0, 0, "", Color.white), 1);
             return;
-        }else{
-            inventoryItems.add(item);
-            levelItems.remove(item);
         }
+    }
+
+    public static boolean addEquippedToInventory(Item i){
+        if(inventoryItems.size() < maxInventory){
+            i.isEquipped = false;
+            inventoryItems.add(i);
+            AudioBank.playEffect(AudioBank.Pickup1);
+            return true;
+        }
+        return false;
+    }
+
+    public static void Equip(Item i){
+        inventoryItems.remove(i);
+        switch(i.type){
+            case Item.WeaponType:
+                if(playerWeapon != null){
+                    inventoryItems.add(playerWeapon);
+                    playerWeapon.isEquipped = false;
+                    playerWeapon = i;
+                    playerWeapon.isEquipped = true;
+                }else{
+                    playerWeapon = i;
+                    playerWeapon.isEquipped = true;
+                }
+                break;
+            case Item.ArmourType:
+                if(playerArmour != null){
+                    inventoryItems.add(playerArmour);
+                    playerArmour = i;
+                    playerArmour.isEquipped = true;
+                }else{
+                    playerArmour = i;
+                    playerArmour.isEquipped = true;
+                }
+                break;
+            case Item.JewelryType:
+                //TODO
+                break;
+        }
+        AudioBank.playEffect(AudioBank.Pickup1);
     }
 
     public static void DropItem(Item item, int x, int y){
@@ -81,10 +157,22 @@ public class ItemManager {
         return null;
     }
 
+    public static Item getInvItem(int i){
+        if(i < inventoryItems.size())
+            return inventoryItems.get(i);
+        return null;
+    }
+
     public static void renderItems(Graphics g, float xOffset, float yOffset, float scale){
         for(Item i : levelItems){
             i.renderLevelItem(g, xOffset, yOffset, scale);
         }
+    }
+
+    public static boolean InventoryIsFull(){
+        if(inventoryItems.size() == maxInventory)
+            return true;
+        return false;
     }
 
 }

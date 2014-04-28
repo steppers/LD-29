@@ -19,8 +19,8 @@ public class Player {
 
     public String playerClass = "Warrior";
 
-    public float hp = 30;
-    public float maxHealth = 30;
+    public float hp = 20;
+    public float maxHealth = 20;
     public float exp = 0;
     public float targetExp = 10;
 

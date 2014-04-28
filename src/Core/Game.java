@@ -32,6 +32,8 @@ public class Game extends StateBasedGame
     @Override
     public void initStatesList(GameContainer gc) throws SlickException
     {
+        AudioBank.init();
+        ImageBank.init();
         GUI.init();
         this.addState(new Menu());
         this.addState(new Play());
