@@ -1,4 +1,4 @@
-package Core;
+package TileSystem;
 
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
@@ -11,7 +11,7 @@ import org.newdawn.slick.geom.Rectangle;
 public class TileMap {
     public int width, height, resolution;
 
-    private TileType[][] tiles;
+    private Tile[][] tiles;
 
     public enum TileType{
         EMPTY,
@@ -34,7 +34,7 @@ public class TileMap {
         this.resolution = resolution;
         this.width = width;
         this.height = height;
-        tiles = new TileType[width][height];
+        tiles = new Tile[width][height];
         InitTextureAtlas();
     }
 
@@ -51,7 +51,7 @@ public class TileMap {
     public void render(Graphics g, float xOffset, float yOffset, float scale){
         for(int x = 0; x < width; x++){
             for(int y = 0; y < height; y++){
-                switch(tiles[x][y]){
+                switch(tiles[x][y].type){
                     case EMPTY:
                         break;
                     case STONE:
@@ -92,21 +92,28 @@ public class TileMap {
         }
     }
 
-    public void setTiles(TileType[][] tiles){
+    public void setTiles(Tile[][] tiles){
         this.tiles = tiles;
     }
 
     public boolean isEmpty(Rectangle r){
         for(int x = (int)r.getMinX(); x < r.getMaxX(); x++){
             for(int y = (int)r.getMinY(); x < r.getMaxY(); y++){
-                if(tiles[x][y] != TileType.EMPTY)
+                if(tiles[x][y].type != Tile.TileType.EMPTY)
                     return false;
             }
         }
         return true;
     }
 
-    public TileType getTile(int x, int y){
+    public Tile getTile(int x, int y){
+        if(x>=0 && x < width && y >= 0 && y < height)
+            return tiles[x][y];
+        else
+            return null;
+    }
+
+    public Tile getTileType(int x, int y){
         if(x>=0 && x < width && y >= 0 && y < height)
             return tiles[x][y];
         else

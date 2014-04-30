@@ -2,6 +2,7 @@ package Enemies;
 
 import Core.*;
 import PathFinding.PathFinder;
+import TileSystem.TileMap;
 import org.newdawn.slick.Graphics;
 
 import java.util.ArrayList;

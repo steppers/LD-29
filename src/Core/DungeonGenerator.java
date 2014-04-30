@@ -2,7 +2,7 @@ package Core;
 
 import PathFinding.Path;
 import PathFinding.PathFinder;
-import org.newdawn.slick.geom.Rectangle;
+import TileSystem.TileMap;
 
 import java.util.Random;
 

@@ -13,6 +13,8 @@ import java.util.ArrayList;
 public class Player {
 
     public int posX, posY;
+    public int lastPosX, lastPosY;
+    public float lerpPosX, lerpPosY;
     private ArrayList<Item> items = new ArrayList<Item>();
     private Image image;
     private Animation downanim;
@@ -62,17 +64,15 @@ public class Player {
             return false;
     }
 
-    public void moveTo(int x, int y){
-
-    }
-
     public void setPos(int x, int y){
         posX = x;
         posY = y;
+        lerpPosX = x;
+        lerpPosY = y;
     }
 
     public void render(Graphics g, float xOffset, float yOffset, float scale){
-        downanim.draw((posX*16*scale)+xOffset, (posY*16*scale)+yOffset, 16*scale, 16*scale);
+        downanim.draw((lerpPosX*16*scale)+xOffset, (lerpPosY*16*scale)+yOffset, 16*scale, 16*scale);
     }
 
 }

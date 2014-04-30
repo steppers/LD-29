@@ -8,6 +8,7 @@ import Items.ItemManager;
 import PathFinding.GridPos;
 import PathFinding.Path;
 import PathFinding.PathFinder;
+import TileSystem.TileMap;
 import org.newdawn.slick.Animation;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
@@ -181,16 +182,24 @@ public class Enemy {
             currentPath = PathFinder.findPath(posX, posY, player.posX, player.posY, false);
             state = AIState.FOLLOWING;
         }else{
-            float dodge = r.nextInt(ItemManager.playerArmour.stats.Evade+5);
-            if(dodge < 8){
-                int damage = r.nextInt(Math.abs(stats.Attack - ItemManager.playerArmour.stats.Defense/2)+1)+stats.Attack/2;
-                if(damage < 0)
-                    damage = 0;
+            float dodge;
+            if(ItemManager.playerArmour != null){
+                dodge = r.nextInt(ItemManager.playerArmour.stats.Evade+5);
+                if(dodge < 8){
+                    int damage = r.nextInt(Math.abs(stats.Attack - ItemManager.playerArmour.stats.Defense/2)+1)+stats.Attack/2;
+                    if(damage < 0)
+                        damage = 0;
+                    player.hp -= damage;
+                    GUI.addComponent(new GUIStatPopup(player.posX, player.posY - 1, "-" + damage, Color.red), 1.5f);
+                    AudioBank.playEffect(AudioBank.Hit2);
+                }else{
+                    GUI.addComponent(new GUIStatPopup(player.posX, player.posY - 1,"Dodge", Color.orange), 1.5f);
+                }
+            }else{
+                int damage = r.nextInt(Math.abs(stats.Attack))+stats.Attack/2;
                 player.hp -= damage;
                 GUI.addComponent(new GUIStatPopup(player.posX, player.posY - 1, "-" + damage, Color.red), 1.5f);
                 AudioBank.playEffect(AudioBank.Hit2);
-            }else{
-                GUI.addComponent(new GUIStatPopup(player.posX, player.posY - 1,"Dodge", Color.orange), 1.5f);
             }
         }
     }

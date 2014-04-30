@@ -1,9 +1,7 @@
 package PathFinding;
 
 import Core.CellSystem;
-import Core.TileMap;
-
-import java.util.ArrayList;
+import TileSystem.TileMap;
 
 /**
  * Created by Ollie on 27/04/14.

@@ -7,6 +7,7 @@ import Items.ItemManager;
 import PathFinding.GridPos;
 import PathFinding.Path;
 import PathFinding.PathFinder;
+import TileSystem.TileMap;
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
@@ -20,6 +21,7 @@ public class Play extends BasicGameState {
 
     private TileMap map;
     private float positionX, positionY, zoom;
+    private float currentLerpX, currentLerpY;
     private Player player;
     private Path playerPath;
     private double moveLastTime = 0;
@@ -47,7 +49,7 @@ public class Play extends BasicGameState {
         enemyManager = new EnemyManager(13, 1, map);
         enemyManager.addAllEnemies(map, player);
         turnManager = new TurnManager();
-        ItemManager.levelItems.clear();
+        ItemManager.reset();
         FogManager.init(40, 40);
         reloaded = true;
         movementPhase = false;
@@ -115,20 +117,20 @@ public class Play extends BasicGameState {
         }
 
         if(GUI.state == GUI.GUIState.IN_GAME){
-            if(!movementPhase){
-                if(input.isMousePressed(0)){
-                    int x, y;
-                    x = (int)(player.posX + input.getMouseX()/32 - 11.5f);
-                    y = (int)(player.posY + input.getMouseY()/32 - 8.375f);
-                    TileMap.TileType i = map.getTile(x, y);
-                    if(i != TileMap.TileType.STONE && i != null && i != TileMap.TileType.EMPTY && input.getMouseY() < 542 && input.getMouseY() > 52 && FogManager.fog[x][y] != 2){
-                        playerPath = PathFinder.findPath(player.posX, player.posY, x, y, false);
-                        movementPhase = true;
-                    }
-                    if(Math.abs(x - player.posX) <= 1 && Math.abs(y - player.posY) <= 1){
-                        movementPhase = ItemManager.useItem(ItemManager.playerWeapon, x, y, enemyManager, player, turnManager);
-                    }
+            if(input.isMousePressed(0)){
+                int x, y;
+                x = (int)(player.posX + input.getMouseX()/32 - 11.5f);
+                y = (int)(player.posY + input.getMouseY()/32 - 8.375f);
+                TileMap.TileType i = map.getTile(x, y);
+                if(i != TileMap.TileType.STONE && i != null && i != TileMap.TileType.EMPTY && input.getMouseY() < 542 && input.getMouseY() > 52 && FogManager.fog[x][y] != 2){
+                    playerPath = PathFinder.findPath(player.posX, player.posY, x, y, false);
+                    movementPhase = true;
                 }
+                if(Math.abs(x - player.posX) <= 1 && Math.abs(y - player.posY) <= 1){
+                    movementPhase = ItemManager.useItem(ItemManager.playerWeapon, x, y, enemyManager, player, turnManager);
+                }
+            }
+            if(!movementPhase){
 
                 Item i = ItemManager.getItem(player.posX, player.posY);
                 if(i != null){
@@ -147,25 +149,28 @@ public class Play extends BasicGameState {
                     turnManager.addEnemyTurns(1);
                     movementPhase = false;
                 }
-            }else{
+            }
+            if(movementPhase){
                 Item i = ItemManager.getItem(player.posX, player.posY);
                 if(i != null){
                     GUI.isOverItem = true;
                 }else{
                     GUI.isOverItem = false;
                 }
-                if(System.nanoTime() - moveLastTime >= 100000000){
+                if(System.nanoTime() - moveLastTime >= 130000000){
                     GridPos n = playerPath.getNextNode();
                     if(n != null){
                         if(!CellSystem.cells[n.x][n.y].enemy){
                             playerPath.removeLastNode();
+                            player.lastPosX = player.posX;
+                            player.lastPosY = player.posY;
                             player.posX = n.x;
                             player.posY = n.y;
                             moveLastTime = System.nanoTime();
                             turnManager.addEnemyTurns(1);
                             if(player.hp < player.maxHealth){
                                 Random r = new Random(System.nanoTime());
-                                if(r.nextFloat() < 0.07f){
+                                if(r.nextFloat() < 0.04f){
                                     player.addHealth(1);
                                 }
                             }
@@ -179,10 +184,20 @@ public class Play extends BasicGameState {
                         }
                         movementPhase = false;
                     }
-                    positionX = -player.posX*32+384;
-                    positionY = -player.posY*32+288;
                 }
+
+                double lerpFactor = (System.nanoTime() - moveLastTime) / 130000000;
+                player.lerpPosX = lerp(player.lastPosX, player.posX, (float)lerpFactor);
+                player.lerpPosY = lerp(player.lastPosY, player.posY, (float)lerpFactor);
+                positionX = -player.lerpPosX*32+384;
+                positionY = -player.lerpPosY*32+288;
             }
         }
+    }
+
+    public float lerp(float a, float b, float t) {
+        if (t < 0)
+            return a;
+        return a + t * (b - a);
     }
 }

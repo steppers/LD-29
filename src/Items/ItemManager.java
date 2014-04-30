@@ -32,6 +32,15 @@ public class ItemManager {
 
     private static Random r = new Random(System.nanoTime());
 
+    public static void reset(){
+        playerWeapon = new Dagger(0, 0, 3, 1, true);
+        playerArmour = new Shirt(0, 0, 1, 1, true);
+        playerJewel1 = null;
+        playerJewel2 = null;
+        inventoryItems.clear();
+        levelItems.clear();
+    }
+
     public static boolean useItem(Item item, int x, int y, EnemyManager em, Player player, TurnManager tm){
         if(item == playerWeapon){
             Enemy e = em.getEnemy(x, y);
@@ -63,7 +72,11 @@ public class ItemManager {
                     player.exp += em.getEnemy(x, y).exp;
                     em.removeEnemy(e);
                 }
-                tm.addEnemyTurns(playerWeapon.stats.Speed);
+                if(playerWeapon != null){
+                    tm.addEnemyTurns(playerWeapon.stats.Speed);
+                }else{
+                    tm.addEnemyTurns(1);
+                }
                 return false;
             }
             return true;
