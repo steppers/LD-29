@@ -1,6 +1,5 @@
 package PathFinding;
 
-import Core.CellSystem;
 import TileSystem.TileMap;
 
 /**
@@ -25,13 +24,10 @@ public class PathFinder {
         tmp = new byte[map.width][map.height];
         for(int x = 0; x < tmp.length; x++){
             for(int y = 0; y < tmp[0].length; y++){
-                switch(map.getTile(x, y)){
-                    case STONE:
-                        tmp[x][y] = 1;
-                        break;
-                    default:
-                        tmp[x][y] = 0;
-                        break;
+                if(map.getTileSolid(x, y)){
+                    tmp[x][y] = unwalkable;
+                }else{
+                    tmp[x][y] = walkable;
                 }
             }
         }
@@ -42,14 +38,14 @@ public class PathFinder {
         if(calcEnemies){
             for(int x = 0; x < tmp.length; x++){
                 for(int y = 0; y < tmp[0].length; y++){
-                    if(CellSystem.cells[x][y].enemy == true)
+                    if(map.getTileEnemy(x, y))
                         tmp[x][y] = 1;
                 }
             }
         }else{
             for(int x = 0; x < tmp.length; x++){
                 for(int y = 0; y < tmp[0].length; y++){
-                    if(CellSystem.cells[x][y].enemy == true)
+                    if(map.getTileEnemy(x, y))
                         tmp[x][y] = 0;
                 }
             }

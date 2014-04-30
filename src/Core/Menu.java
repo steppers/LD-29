@@ -74,8 +74,8 @@ public class Menu extends BasicGameState {
                 if(input.isMousePressed(0)){
                     if(playRect.contains(mousePos.x, mousePos.y)){
                         AudioBank.playEffect(AudioBank.Select1);
-                        stateBasedGame.enterState(11);
                         stateBasedGame.getState(11).init(gameContainer, stateBasedGame);
+                        stateBasedGame.enterState(11);
                     }
                     if(optionsRect.contains(mousePos.x, mousePos.y)){
                         AudioBank.playEffect(AudioBank.Select1);

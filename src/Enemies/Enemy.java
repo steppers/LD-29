@@ -8,6 +8,7 @@ import Items.ItemManager;
 import PathFinding.GridPos;
 import PathFinding.Path;
 import PathFinding.PathFinder;
+import TileSystem.Tile;
 import TileSystem.TileMap;
 import org.newdawn.slick.Animation;
 import org.newdawn.slick.Color;
@@ -93,12 +94,12 @@ public class Enemy {
             decision = r.nextInt(8);
             switch(decision){
                 case 0:
-                    if(map.getTile(posX, posY-1) != TileMap.TileType.STONE && !CellSystem.cells[posX][posY-1].enemy){
+                    if(!map.getTileSolid(posX, posY-1) && !map.getTileEnemy(posX, posY-1)){
                         if(posX == player.posX && posY-1 == player.posY){
                             break;
                         }else{
-                            CellSystem.cells[posX][posY].enemy = false;
-                            CellSystem.cells[posX][posY-1].enemy = true;
+                            map.swapHasEnemy(posX, posY);
+                            map.swapHasEnemy(posX, posY-1);
                             lastY = posY;
                             lastX = posX;
                             posY--;
@@ -107,12 +108,12 @@ public class Enemy {
                     }
                     break;
                 case 1:
-                    if(map.getTile(posX, posY+1) != TileMap.TileType.STONE && !CellSystem.cells[posX][posY+1].enemy){
+                    if(!map.getTileSolid(posX, posY+1) && !map.getTileEnemy(posX, posY+1)){
                         if(posX == player.posX && posY+1 == player.posY){
                             break;
                         }else{
-                            CellSystem.cells[posX][posY].enemy = false;
-                            CellSystem.cells[posX][posY+1].enemy = true;
+                            map.swapHasEnemy(posX, posY);
+                            map.swapHasEnemy(posX, posY+1);
                             lastY = posY;
                             lastX = posX;
                             posY++;
@@ -121,12 +122,12 @@ public class Enemy {
                     }
                     break;
                 case 2:
-                    if(map.getTile(posX+1, posY) != TileMap.TileType.STONE && !CellSystem.cells[posX+1][posY].enemy){
+                    if(!map.getTileSolid(posX+1, posY) && !map.getTileEnemy(posX+1, posY)){
                         if(posX == player.posX+1 && posY == player.posY){
                             break;
                         }else{
-                            CellSystem.cells[posX][posY].enemy = false;
-                            CellSystem.cells[posX+1][posY].enemy = true;
+                            map.swapHasEnemy(posX, posY);
+                            map.swapHasEnemy(posX+1, posY);
                             lastY = posY;
                             lastX = posX;
                             posX++;
@@ -135,12 +136,12 @@ public class Enemy {
                     }
                     break;
                 case 3:
-                    if(map.getTile(posX-1, posY) != TileMap.TileType.STONE && !CellSystem.cells[posX-1][posY].enemy){
+                    if(!map.getTileSolid(posX - 1, posY) && !map.getTileEnemy(posX-1, posY)){
                         if(posX-1 == player.posX && posY == player.posY){
                             break;
                         }else{
-                            CellSystem.cells[posX][posY].enemy = false;
-                            CellSystem.cells[posX-1][posY].enemy = true;
+                            map.swapHasEnemy(posX, posY);
+                            map.swapHasEnemy(posX-1, posY);
                             lastY = posY;
                             lastX = posX;
                             posX--;
@@ -160,22 +161,22 @@ public class Enemy {
 
     private void updateFollowing(TileMap map, Player player) {
         currentPath = PathFinder.findPath(posX, posY, player.posX, player.posY, false);
-        if(currentPath.length() > 7)
-            state = AIState.IDLE;
-        if(currentPath.length() < 2)
-            state = AIState.ATTACKING;
         GridPos n = currentPath.getNextNode();
         if(n != null){
-            if(!CellSystem.cells[n.x][n.y].enemy){
+            if(!map.getTileEnemy(n.x, n.y)){
                 if(n.x != player.posX || n.y != player.posY){
                     currentPath.removeLastNode();
-                    CellSystem.cells[posX][posY].enemy = false;
-                    CellSystem.cells[n.x][n.y].enemy = true;
+                    map.swapHasEnemy(posX, posY);
+                    map.swapHasEnemy(n.x, n.y);
                     posX = n.x;
                     posY = n.y;
                 }
             }
         }
+        if(currentPath.length() > 7)
+            state = AIState.IDLE;
+        if(currentPath.length() < 2)
+            state = AIState.ATTACKING;
     }
     private void updateAttacking(TileMap map, Player player) {
         if(Math.abs(posX - player.posX) > 1 || Math.abs(posY - player.posY) > 1){
@@ -192,6 +193,8 @@ public class Enemy {
                     player.hp -= damage;
                     GUI.addComponent(new GUIStatPopup(player.posX, player.posY - 1, "-" + damage, Color.red), 1.5f);
                     AudioBank.playEffect(AudioBank.Hit2);
+                    player.movementPhase = false;
+                    player.currentPath = new Path();
                 }else{
                     GUI.addComponent(new GUIStatPopup(player.posX, player.posY - 1,"Dodge", Color.orange), 1.5f);
                 }
@@ -201,6 +204,7 @@ public class Enemy {
                 GUI.addComponent(new GUIStatPopup(player.posX, player.posY - 1, "-" + damage, Color.red), 1.5f);
                 AudioBank.playEffect(AudioBank.Hit2);
             }
+            player.movementPhase = false;
         }
     }
     private void updateSleeping(TileMap map, Player player) {

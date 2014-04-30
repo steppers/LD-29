@@ -26,23 +26,17 @@ public class Slime extends Enemy {
 
         exp = (int)(3*difficulty/2);
         Random r = new Random(System.nanoTime());
-        int i = r.nextInt(3);
+        int i = r.nextInt(4);
         if(i == 0){
             float f = r.nextFloat();
-            if(f < 0.3f)
-                    items = new Item[]{new Dagger(0, 0, 4, 1, false)};
-            else if(f >= 0.3f && f < 0.5f)
+            if(f < 0.41f)
                     items = new Item[]{new Sword(0, 0, 5, 1, false)};
-            else if(f >= 0.5f && f < 0.6f)
-                    items = new Item[]{new Longsword(0, 0, 6, 2, false)};
-            else if(f >= 0.6f && f < 0.85f)
+            else if(f >= 0.41f && f < 0.43f)
+                    items = new Item[]{new Longsword(0, 0, 9, 2, false)};
+            else if(f >= 0.43f && f < 0.8f)
                     items = new Item[]{new HealthPotion(50, 0)};
-            else if(f >= 0.85f && f < 0.9f)
+            else if(f >= 0.8f && f < 1f)
                     items = new Item[]{new LeatherArmour(0, 0, 3, 1, false)};
-            else if(f >= 0.9f && f < 0.95f)
-                    items = new Item[]{new SteelArmour(0, 0, 5, 1, false)};
-            else if(f >= 0.95f && f < 1f)
-                    items = new Item[]{new ScaleArmour(0, 0, 8, 1, false)};
         }
         stats = new Stats((int)(20*difficulty/3), (int)(20*difficulty/3), (int)(2+difficulty/3), 0, (int)(1*difficulty/3), 1);
         moveSpeed = 1;

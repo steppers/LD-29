@@ -1,11 +1,8 @@
 package GUI;
 
-import Core.AudioBank;
-import Core.ImageBank;
-import Core.TurnManager;
+import Core.*;
 import Items.Item;
 import Items.ItemManager;
-import Core.Player;
 import org.newdawn.slick.*;
 import org.newdawn.slick.geom.Rectangle;
 import org.newdawn.slick.openal.Audio;
@@ -106,7 +103,6 @@ public class GUI {
                 break;
             case DEAD:
                 if(input.isKeyPressed(Input.KEY_SPACE)){
-                    state = GUIState.MAIN_MENU;
                     sbg.enterState(0);
                     sbg.getState(0).init(gc, sbg);
                 }

@@ -2,7 +2,9 @@ package Core;
 
 import PathFinding.Path;
 import PathFinding.PathFinder;
+import TileSystem.Tile;
 import TileSystem.TileMap;
+import TileSystem.Tiles.*;
 
 import java.util.Random;
 
@@ -14,14 +16,14 @@ public class DungeonGenerator {
     private static Random rand;
 
     private static TileMap map;
-    private static TileMap.TileType[][] tiles;
+    private static Tile[][] tiles;
 
-    private static TileMap.TileType floor;
-    private static TileMap.TileType wall;
-    private static TileMap.TileType door;
-    private static TileMap.TileType openDoor;
-    private static TileMap.TileType StairsUp;
-    private static TileMap.TileType StairsDown;
+    private static Tile.TileType floor;
+    private static Tile.TileType wall;
+    private static Tile.TileType door;
+    private static Tile.TileType openDoor;
+    private static Tile.TileType StairsUp;
+    private static Tile.TileType StairsDown;
 
     public enum DungeonType{
         PRISON,
@@ -32,12 +34,10 @@ public class DungeonGenerator {
     public static TileMap CreateDungeon(int width, int height, DungeonType type, int difficulty){
         rand = new Random(System.nanoTime());
         map = new TileMap(width, height, Config.textureResolution);
-        CellSystem.setSize(width, height);
-        CellSystem.init();
-        tiles = new TileMap.TileType[width][height];
+        tiles = new Tile[width][height];
         for(int x = 0; x < width; x++){
             for(int y = 0; y < height; y++){
-                tiles[x][y] = TileMap.TileType.EMPTY;
+                tiles[x][y] = new Tile(Tile.TileType.EMPTY, false);
             }
         }
 
@@ -49,10 +49,10 @@ public class DungeonGenerator {
         while(true){
             x = rand.nextInt(tiles.length);
             y = rand.nextInt(tiles[0].length);
-            if(tiles[x][y] == TileMap.TileType.FLOOR_STONE){
+            if(tiles[x][y].type == Tile.TileType.STONE_FLOOR){
                 Path p = PathFinder.findPath(20, 17, x, y, false);
-                if(p.length() > 30){
-                    tiles[x][y] = TileMap.TileType.STAIRS_DOWN;
+                if(p.length() > 20){
+                    tiles[x][y] = new StairsDown();
                     break;
                 }
             }
@@ -64,19 +64,45 @@ public class DungeonGenerator {
     private static void genDungeon() {
         genRoom(20, 20, 6, 5, 0, false);
         int r;
-        for(int i = 0; i < 400; i++){
+        for(int i = 0; i < 200; i++){
             r = rand.nextInt(100);
-            if(r>=0 && r<=35){//Corridors
+            if(r>=0 && r<=40){//Corridors
                 int[] pos = findWall();
-                genCorridor(pos[0], pos[1], rand.nextInt(6)+5, pos[2]);
+                genCorridor(pos[0], pos[1], rand.nextInt(5)+3, pos[2]);
             }
-            if(r>35 && r<=100){//Rooms
+            if(r>40 && r<=100){//Rooms
                 int[] pos = findWall();
-                genRoom(pos[0], pos[1], rand.nextInt(6)+2, rand.nextInt(6)+2, pos[2], true);
+                genRoom(pos[0], pos[1], rand.nextInt(4)+3, rand.nextInt(4)+3, pos[2], true);
             }
         }
 
-        tiles[20][17] = TileMap.TileType.STAIRS_UP;
+        for(int x = 0; x < tiles.length; x++){
+            for(int y = 0; y < tiles[0].length; y++){
+                if(!tiles[x][y].isSolid && tiles[x][y].type != Tile.TileType.EMPTY){
+                    int c = 0;
+                    int d = 0;
+                    for(int i = 0; i < 4; i++){
+                        if(!tiles[x-1][y].isSolid){
+                            c++; d = 4;
+                        }
+                        if(!tiles[x+1][y].isSolid){
+                            c++; d = 3;
+                        }
+                        if(!tiles[x][y-1].isSolid){
+                            c++; d = 1;
+                        }
+                        if(!tiles[x][y+1].isSolid){
+                            c++; d = 2;
+                        }
+                        if(c == 1){
+                            linkCorridor(x, y, d);
+                        }
+                    }
+                }
+            }
+        }
+
+        tiles[19][17] = new StairsUp();
     }
 
     private static void genCorridor(int posX, int posY, int len, int dir){
@@ -89,13 +115,16 @@ public class DungeonGenerator {
                 miny = posY-len-1;
                 maxy = posY-1;
                 if(isEmpty(minx, miny, maxx, maxy)){
-                    tiles[posX][posY] = TileMap.TileType.DOOR_STONE;
+                    if(!tiles[posX][posY+2].isSolid)
+                        tiles[posX][posY] = new StoneDoor();
+                    else
+                        tiles[posX][posY] = new StoneFloor();
                     for(int x = minx; x < maxx+1; x++){
                         for(int y = miny; y < maxy+1; y++){
                             if(x==minx || x == maxx || y == miny){
-                                tiles[x][y] = TileMap.TileType.STONE;
+                                tiles[x][y] = new StoneWall();
                             }else{
-                                tiles[x][y] = TileMap.TileType.FLOOR_STONE;
+                                tiles[x][y] = new StoneFloor();
                             }
                         }
                     }
@@ -108,13 +137,16 @@ public class DungeonGenerator {
                 miny = posY+1;
                 maxy = posY+len+1;
                 if(isEmpty(minx, miny, maxx, maxy)){
-                    tiles[posX][posY] = TileMap.TileType.DOOR_STONE;
+                    if(!tiles[posX][posY-2].isSolid)
+                        tiles[posX][posY] = new StoneDoor();
+                    else
+                        tiles[posX][posY] = new StoneFloor();
                     for(int x = minx; x < maxx+1; x++){
                         for(int y = miny; y < maxy+1; y++){
                             if(x==minx || x == maxx || y == maxy){
-                                tiles[x][y] = TileMap.TileType.STONE;
+                                tiles[x][y] = new StoneWall();
                             }else{
-                                tiles[x][y] = TileMap.TileType.FLOOR_STONE;
+                                tiles[x][y] = new StoneFloor();
                             }
                         }
                     }
@@ -127,13 +159,16 @@ public class DungeonGenerator {
                 miny = posY-1;
                 maxy = posY+1;
                 if(isEmpty(minx, miny, maxx, maxy)){
-                    tiles[posX][posY] = TileMap.TileType.DOOR_STONE;
+                    if(!tiles[posX-2][posY].isSolid)
+                        tiles[posX][posY] = new StoneDoor();
+                    else
+                        tiles[posX][posY] = new StoneFloor();
                     for(int x = minx; x < maxx+1; x++){
                         for(int y = miny; y < maxy+1; y++){
                             if(x == maxx || y == maxy || y == miny){
-                                tiles[x][y] = TileMap.TileType.STONE;
+                                tiles[x][y] = new StoneWall();
                             }else{
-                                tiles[x][y] = TileMap.TileType.FLOOR_STONE;
+                                tiles[x][y] = new StoneFloor();
                             }
                         }
                     }
@@ -146,13 +181,16 @@ public class DungeonGenerator {
                 miny = posY-1;
                 maxy = posY+1;
                 if(isEmpty(minx, miny, maxx, maxy)){
-                    tiles[posX][posY] = TileMap.TileType.DOOR_STONE;
+                    if(!tiles[posX+2][posY].isSolid)
+                        tiles[posX][posY] = new StoneDoor();
+                    else
+                        tiles[posX][posY] = new StoneFloor();
                     for(int x = minx; x < maxx+1; x++){
                         for(int y = miny; y < maxy+1; y++){
                             if(x == minx || y == maxy || y == miny){
-                                tiles[x][y] = TileMap.TileType.STONE;
+                                tiles[x][y] = new StoneWall();
                             }else{
-                                tiles[x][y] = TileMap.TileType.FLOOR_STONE;
+                                tiles[x][y] = new StoneFloor();
                             }
                         }
                     }
@@ -166,101 +204,170 @@ public class DungeonGenerator {
         switch(dir){
             //north
             case 0:
-                minx = posX-(width/2)-1;
-                maxx = minx+width+1;
-                miny = posY-height-1;
+                minx = posX-(width/2);
+                maxx = minx+width;
+                miny = posY-height;
                 maxy = posY-1;
                 if(isEmpty(minx, miny, maxx, maxy)){
-                    for(int x = minx; x < maxx+1; x++){
-                        for(int y = miny; y < maxy+1; y++){
-                            if(x==minx || x == maxx || y == miny || y == maxy){
-                                tiles[x][y] = TileMap.TileType.STONE;
+                    for(int x = minx-1; x < maxx+2; x++){
+                        for(int y = miny-1; y < maxy+2; y++){
+                            if(x==minx-1 || x == maxx+1 || y == miny-1 || y == maxy+1){
+                                tiles[x][y] = new StoneWall();
                             }else{
-                                tiles[x][y] = TileMap.TileType.FLOOR_STONE;
+                                tiles[x][y] = new StoneFloor();
                             }
                         }
                     }
                     if(door){
-                        tiles[posX][posY] = TileMap.TileType.DOOR_STONE;
-                        tiles[posX][posY-1] = TileMap.TileType.FLOOR_STONE;
+                        tiles[posX][posY] = new StoneDoor();
                     }
                 }
                 break;
             //south
             case 1:
-                minx = posX-(width/2)-1;
-                maxx = minx+width+1;
+                minx = posX-(width/2);
+                maxx = minx+width-1;
                 miny = posY+1;
-                maxy = posY+height+1;
+                maxy = posY+height;
                 if(isEmpty(minx, miny, maxx, maxy)){
-                    for(int x = minx; x < maxx+1; x++){
-                        for(int y = miny; y < maxy+1; y++){
-                            if(x==minx || x == maxx || y == miny || y == maxy){
-                                tiles[x][y] = TileMap.TileType.STONE;
+                    for(int x = minx-1; x < maxx+2; x++){
+                        for(int y = miny-1; y < maxy+2; y++){
+                            if(x==minx-1 || x == maxx+1 || y == miny-1 || y == maxy+1){
+                                tiles[x][y] = new StoneWall();
                             }else{
-                                tiles[x][y] = TileMap.TileType.FLOOR_STONE;
+                                tiles[x][y] = new StoneFloor();
                             }
                         }
                     }
                     if(door){
-                        tiles[posX][posY] = TileMap.TileType.DOOR_STONE;
-                        tiles[posX][posY+1] = TileMap.TileType.FLOOR_STONE;
+                        tiles[posX][posY] = new StoneDoor();
                     }
                 }
                 break;
             //east
             case 2:
                 minx = posX+1;
-                maxx = posX+width+1;
-                miny = posY-(height/2)-1;
-                maxy = miny+height+1;
+                maxx = posX+width;
+                miny = posY-(height/2);
+                maxy = miny+height;
                 if(isEmpty(minx, miny, maxx, maxy)){
-                    for(int x = minx; x < maxx+1; x++){
-                        for(int y = miny; y < maxy+1; y++){
-                            if(x==minx || x == maxx || y == miny || y == maxy){
-                                tiles[x][y] = TileMap.TileType.STONE;
+                    for(int x = minx-1; x < maxx+2; x++){
+                        for(int y = miny-1; y < maxy+2; y++){
+                            if(x==minx-1 || x == maxx+1 || y == miny-1 || y == maxy+1){
+                                tiles[x][y] = new StoneWall();
                             }else{
-                                tiles[x][y] = TileMap.TileType.FLOOR_STONE;
+                                tiles[x][y] = new StoneFloor();
                             }
                         }
                     }
                     if(door){
-                        tiles[posX][posY] = TileMap.TileType.DOOR_STONE;
-                        tiles[posX+1][posY] = TileMap.TileType.FLOOR_STONE;
+                        tiles[posX][posY] = new StoneDoor();
                     }
                 }
                 break;
             //west
             case 3:
-                minx = posX-width-1;
+                minx = posX-width;
                 maxx = posX-1;
-                miny = posY-(height/2)-1;
-                maxy = miny+height+1;
+                miny = posY-(height/2);
+                maxy = miny+height-1;
                 if(isEmpty(minx, miny, maxx, maxy)){
-                    for(int x = minx; x < maxx+1; x++){
-                        for(int y = miny; y < maxy+1; y++){
-                            if(x==minx || x == maxx || y == miny || y == maxy){
-                                tiles[x][y] = TileMap.TileType.STONE;
+                    for(int x = minx-1; x < maxx+2; x++){
+                        for(int y = miny-1; y < maxy+2; y++){
+                            if(x==minx-1 || x == maxx+1 || y == miny-1 || y == maxy+1){
+                                tiles[x][y] = new StoneWall();
                             }else{
-                                tiles[x][y] = TileMap.TileType.FLOOR_STONE;
+                                tiles[x][y] = new StoneFloor();
                             }
                         }
                     }
                     if(door){
-                        tiles[posX][posY] = TileMap.TileType.DOOR_STONE;
-                        tiles[posX-1][posY] = TileMap.TileType.FLOOR_STONE;
+                        tiles[posX][posY] = new StoneDoor();
+                        tiles[posX-1][posY] = new StoneFloor();
                     }
                 }
                 break;
         }
     }
 
+    private static void linkCorridor(int posX, int posY, int dir){
+        for(int i = 0; i < 4; i++){
+            switch(i){
+                case 1:
+                    if(dir != 1)
+                        for(int o = 1; o < 6; o++){
+                            if(posY-o == 0)
+                                break;
+                            if(!tiles[posX][posY-o].isSolid && tiles[posX][posY-o].type != Tile.TileType.EMPTY){
+                                for(int a = 1; a < o; a++){
+                                    tiles[posX][posY-a] = new StoneFloor();
+                                    tiles[posX-1][posY-a] = new StoneWall();
+                                    tiles[posX+1][posY-a] = new StoneWall();
+                                }
+                                tiles[posX][posY-o+1] = new StoneDoor();
+                                return;
+                            }
+                        }
+                    break;
+                case 2:
+                    if(dir != 2)
+                        for(int o = 1; o < 6; o++){
+                            if(posY+o == tiles[0].length)
+                                break;
+                            if(!tiles[posX][posY+o].isSolid && tiles[posX][posY+o].type != Tile.TileType.EMPTY){
+                                for(int a = 1; a < o; a++){
+                                    tiles[posX][posY+a] = new StoneFloor();
+                                    tiles[posX-1][posY+a] = new StoneWall();
+                                    tiles[posX+1][posY+a] = new StoneWall();
+                                }
+                                tiles[posX][posY+o-1] = new StoneDoor();
+                                return;
+                            }
+                        }
+                    break;
+                case 3:
+                    if(dir != 3)
+                        for(int o = 1; o < 6; o++){
+                            if(posX+o == tiles.length)
+                                break;
+                            if(!tiles[posX+o][posY].isSolid && tiles[posX+o][posY].type != Tile.TileType.EMPTY){
+                                for(int a = 1; a < o; a++){
+                                    tiles[posX+a][posY] = new StoneFloor();
+                                    tiles[posX+a][posY-1] = new StoneWall();
+                                    tiles[posX+a][posY+1] = new StoneWall();
+                                }
+                                tiles[posX+o-1][posY] = new StoneDoor();
+                                return;
+                            }
+                        }
+                    break;
+                case 4:
+                    if(dir != 4)
+                        for(int o = 1; o < 6; o++){
+                            if(posX-o == tiles.length)
+                                break;
+                            if(!tiles[posX-o][posY].isSolid && tiles[posX-o][posY].type != Tile.TileType.EMPTY){
+                                for(int a = 1; a < o; a++){
+                                    tiles[posX-a][posY] = new StoneFloor();
+                                    tiles[posX-a][posY-1] = new StoneWall();
+                                    tiles[posX-a][posY+1] = new StoneWall();
+                                }
+                                tiles[posX-o+1][posY] = new StoneDoor();
+                                return;
+                            }
+                        }
+                    break;
+            }
+        }
+    }
+
     private static boolean isEmpty(int x, int y, int x2, int y2){
+        if(x-1<0 || x2+1>=tiles.length || y-1<0 || y2+1>=tiles[0].length)
+            return false;
+
         for(int posX = x; posX < x2+1; posX++){
             for(int posY = y; posY < y2+1; posY++){
-                if(posX<0 || posX>=tiles.length || posY<0 || posY>=tiles[0].length){
-                    return false;
-                }else if(tiles[posX][posY] != TileMap.TileType.EMPTY){
+                if(tiles[posX][posY].isSolid){
                     return false;
                 }
             }
@@ -273,24 +380,24 @@ public class DungeonGenerator {
         while(true){
             pos[0] = rand.nextInt(tiles.length-1)+1;
             pos[1] = rand.nextInt(tiles[0].length-1)+1;
-            if(tiles[pos[0]][pos[1]] == TileMap.TileType.STONE){
+            if(tiles[pos[0]][pos[1]].type == Tile.TileType.STONE_WALL){
                 if(pos[0] < tiles.length-1 && pos[0] > 0 && pos[1] < tiles[0].length-1 && pos[1] > 0){
-                    if(tiles[pos[0]-1][pos[1]] == TileMap.TileType.STONE && tiles[pos[0]+1][pos[1]] == TileMap.TileType.STONE){
-                        if(tiles[pos[0]][pos[1]+1] == TileMap.TileType.EMPTY && tiles[pos[0]][pos[1]-1] == TileMap.TileType.FLOOR_STONE){
+                    if(tiles[pos[0]-1][pos[1]].type == Tile.TileType.STONE_WALL && tiles[pos[0]+1][pos[1]].type == Tile.TileType.STONE_WALL){
+                        if(tiles[pos[0]][pos[1]+1].type == Tile.TileType.EMPTY && tiles[pos[0]][pos[1]-1].type == Tile.TileType.STONE_FLOOR){
                             pos[2] = 1;
                             return pos;
                         }
-                        if(tiles[pos[0]][pos[1]-1] == TileMap.TileType.EMPTY && tiles[pos[0]][pos[1]+1] == TileMap.TileType.FLOOR_STONE){
+                        if(tiles[pos[0]][pos[1]-1].type == Tile.TileType.EMPTY && tiles[pos[0]][pos[1]+1].type == Tile.TileType.STONE_FLOOR){
                             pos[2] = 0;
                             return pos;
                         }
                     }
-                    if(tiles[pos[0]][pos[1]-1] == TileMap.TileType.STONE && tiles[pos[0]][pos[1]+1] == TileMap.TileType.STONE){
-                        if(tiles[pos[0]+1][pos[1]] == TileMap.TileType.EMPTY && tiles[pos[0]-1][pos[1]] == TileMap.TileType.FLOOR_STONE){
+                    if(tiles[pos[0]][pos[1]-1].type == Tile.TileType.STONE_WALL && tiles[pos[0]][pos[1]+1].type == Tile.TileType.STONE_WALL){
+                        if(tiles[pos[0]+1][pos[1]].type == Tile.TileType.EMPTY && tiles[pos[0]-1][pos[1]].type == Tile.TileType.STONE_FLOOR){
                             pos[2] = 2;
                             return pos;
                         }
-                        if(tiles[pos[0]-1][pos[1]] == TileMap.TileType.EMPTY && tiles[pos[0]+1][pos[1]] == TileMap.TileType.FLOOR_STONE){
+                        if(tiles[pos[0]-1][pos[1]].type == Tile.TileType.EMPTY && tiles[pos[0]+1][pos[1]].type == Tile.TileType.STONE_FLOOR){
                             pos[2] = 3;
                             return pos;
                         }
@@ -298,5 +405,9 @@ public class DungeonGenerator {
                 }
             }
         }
+    }
+
+    private boolean isInRoom(int x, int y){
+        return false;
     }
 }

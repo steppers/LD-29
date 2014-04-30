@@ -2,6 +2,7 @@ package Core;
 
 import GUI.GUI;
 import Items.Item;
+import PathFinding.Path;
 import org.newdawn.slick.*;
 
 import GUI.GUIStatPopup;
@@ -25,6 +26,9 @@ public class Player {
     public float maxHealth = 20;
     public float exp = 0;
     public float targetExp = 10;
+
+    public boolean movementPhase = false;
+    public Path currentPath;
 
     public Player(){
         try{

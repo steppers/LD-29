@@ -14,7 +14,7 @@ public class FogManager {
     private static final byte hidden = 2;
     private static final byte seen = 3;
     private static final byte visible = 4;
-    private static final Color semi = new Color(0, 0, 0, 0.5f);
+    private static final Color semi = new Color(0, 0, 0, 0.7f);
 
     public static void init(int width, int height){
         fog = new byte[width][height];

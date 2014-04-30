@@ -24,7 +24,7 @@ public class ItemManager {
 
     public static ArrayList<Item> levelItems = new ArrayList<Item>();
     public static ArrayList<Item> inventoryItems = new ArrayList<Item>();
-    public static Item playerWeapon = new Dagger(0, 0, 3, 1, true);
+    public static Item playerWeapon = new Dagger(0, 0, 4, 1, true);
     public static Item playerArmour = new Shirt(0, 0, 1, 1, true);
     public static Item playerJewel1 = null;
     public static Item playerJewel2 = null;
@@ -33,7 +33,7 @@ public class ItemManager {
     private static Random r = new Random(System.nanoTime());
 
     public static void reset(){
-        playerWeapon = new Dagger(0, 0, 3, 1, true);
+        playerWeapon = new Dagger(0, 0, 4, 1, true);
         playerArmour = new Shirt(0, 0, 1, 1, true);
         playerJewel1 = null;
         playerJewel2 = null;

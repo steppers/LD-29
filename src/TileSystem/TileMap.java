@@ -13,21 +13,6 @@ public class TileMap {
 
     private Tile[][] tiles;
 
-    public enum TileType{
-        EMPTY,
-        DIRT,
-        STONE,
-        WOOD,
-        DOOR_STONE,
-        DOOR_STONE_OPEN,
-        STAIRS_UP,
-        STAIRS_DOWN,
-        FLOOR_STONE,
-        FLOOR_WATER,
-        FLOOR_WOOD,
-        FLOOR_DIRT
-    }
-
     private Image textures;
 
     public TileMap(int width, int height, int resolution){
@@ -54,31 +39,31 @@ public class TileMap {
                 switch(tiles[x][y].type){
                     case EMPTY:
                         break;
-                    case STONE:
+                    case STONE_WALL:
                         g.drawImage(textures, (x*resolution*scale)+xOffset, (y*resolution*scale)+yOffset, (x*resolution*scale)+xOffset+resolution*scale, (y*resolution*scale)+yOffset+resolution*scale, 0, 0, resolution, resolution);
                         break;
-                    case DIRT:
+                    case DIRT_WALL:
                         g.drawImage(textures, (x*resolution*scale)+xOffset, (y*resolution*scale)+yOffset, (x*resolution*scale)+xOffset+resolution*scale, (y*resolution*scale)+yOffset+resolution*scale, resolution, 0, resolution+resolution, resolution);
                         break;
-                    case WOOD:
+                    case WOOD_WALL:
                         g.drawImage(textures, (x*resolution*scale)+xOffset, (y*resolution*scale)+yOffset, (x*resolution*scale)+xOffset+resolution*scale, (y*resolution*scale)+yOffset+resolution*scale, resolution*2, 0, resolution+resolution*2, resolution);
                         break;
-                    case DOOR_STONE:
+                    case STONE_DOOR:
                         g.drawImage(textures, (x*resolution*scale)+xOffset, (y*resolution*scale)+yOffset, (x*resolution*scale)+xOffset+resolution*scale, (y*resolution*scale)+yOffset+resolution*scale, resolution*3, 0, resolution+resolution*3, resolution);
                         break;
-                    case DOOR_STONE_OPEN:
+                    case STONE_DOOR_OPEN:
                         g.drawImage(textures, (x*resolution*scale)+xOffset, (y*resolution*scale)+yOffset, (x*resolution*scale)+xOffset+resolution*scale, (y*resolution*scale)+yOffset+resolution*scale, resolution*4, 0, resolution+resolution*4, resolution);
                         break;
-                    case FLOOR_STONE:
+                    case STONE_FLOOR:
                         g.drawImage(textures, (x*resolution*scale)+xOffset, (y*resolution*scale)+yOffset, (x*resolution*scale)+xOffset+resolution*scale, (y*resolution*scale)+yOffset+resolution*scale, resolution*5, 0, resolution+resolution*5, resolution);
                         break;
-                    case FLOOR_WATER:
+                    case WATER_FLOOR:
                         g.drawImage(textures, (x*resolution*scale)+xOffset, (y*resolution*scale)+yOffset, (x*resolution*scale)+xOffset+resolution*scale, (y*resolution*scale)+yOffset+resolution*scale, resolution*6, 0, resolution+resolution*6, resolution);
                         break;
-                    case FLOOR_WOOD:
+                    case WOOD_FLOOR:
                         g.drawImage(textures, (x*resolution*scale)+xOffset, (y*resolution*scale)+yOffset, (x*resolution*scale)+xOffset+resolution*scale, (y*resolution*scale)+yOffset+resolution*scale, resolution*7, 0, resolution+resolution*7, resolution);
                         break;
-                    case FLOOR_DIRT:
+                    case DIRT_FLOOR:
                         g.drawImage(textures, (x*resolution*scale)+xOffset, (y*resolution*scale)+yOffset, (x*resolution*scale)+xOffset+resolution*scale, (y*resolution*scale)+yOffset+resolution*scale, 0, resolution, resolution, resolution+resolution);
                         break;
                     case STAIRS_UP:
@@ -113,10 +98,22 @@ public class TileMap {
             return null;
     }
 
-    public Tile getTileType(int x, int y){
+    public Tile.TileType getTileType(int x, int y){
         if(x>=0 && x < width && y >= 0 && y < height)
-            return tiles[x][y];
+            return tiles[x][y].type;
         else
             return null;
+    }
+
+    public boolean getTileSolid(int x, int y){
+        return tiles[x][y].isSolid;
+    }
+
+    public boolean getTileEnemy(int x, int y){
+        return tiles[x][y].hasEnemy;
+    }
+
+    public void swapHasEnemy(int x, int y){
+        tiles[x][y].hasEnemy = !tiles[x][y].hasEnemy;
     }
 }

@@ -11,24 +11,26 @@ public class Tile {
 
     public enum TileType{
         EMPTY,
-        DIRT,
-        STONE,
-        WOOD,
-        DOOR_STONE,
-        DOOR_STONE_OPEN,
+        DIRT_WALL,
+        STONE_WALL,
+        WOOD_WALL,
+        STONE_DOOR,
+        STONE_DOOR_OPEN,
         STAIRS_UP,
         STAIRS_DOWN,
-        FLOOR_STONE,
-        FLOOR_WATER,
-        FLOOR_WOOD,
-        FLOOR_DIRT
+        STONE_FLOOR,
+        WATER_FLOOR,
+        WOOD_FLOOR,
+        DIRT_FLOOR
     }
 
     public TileType type;
     public ArrayList<Item> items;
     public boolean hasEnemy = false;
+    public boolean isSolid = false;
 
-    public Tile(TileType type){
+    public Tile(TileType type, boolean isSolid){
+        this.isSolid = isSolid;
         this.type = type;
         items = new ArrayList<Item>();
     }
