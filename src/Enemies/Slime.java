@@ -26,7 +26,7 @@ public class Slime extends Enemy {
 
         exp = (int)(3*difficulty/2);
         Random r = new Random(System.nanoTime());
-        int i = r.nextInt(4);
+        int i = r.nextInt(3);
         if(i == 0){
             float f = r.nextFloat();
             if(f < 0.3f)
