@@ -41,7 +41,7 @@ public class Player {
         downanim = new Animation(new Image[]{image.getSubImage(0, 0, 16, 16),
                 image.getSubImage(16, 0, 16, 16),
                 image.getSubImage(32, 0, 16, 16),
-                image.getSubImage(48, 0, 16, 16)}, 250);
+                image.getSubImage(48, 0, 16, 16)}, 43);
     }
 
     public void addHealth(int health){
@@ -76,6 +76,13 @@ public class Player {
     }
 
     public void render(Graphics g, float xOffset, float yOffset, float scale){
+        if(!movementPhase){
+            downanim.setCurrentFrame(0);
+            downanim.stop();
+        }else{
+            downanim.start();
+        }
+
         downanim.draw((lerpPosX*16*scale)+xOffset, (lerpPosY*16*scale)+yOffset, 16*scale, 16*scale);
     }
 

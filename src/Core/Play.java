@@ -53,6 +53,7 @@ public class Play extends BasicGameState {
         enemyManager.addAllEnemies(map, player);
         turnManager = new TurnManager();
         ItemManager.reset();
+        ItemManager.ScatterItems(1, 5, map);
         FogManager.init(40, 40);
         player.movementPhase = false;
         positionX = -player.posX*32+384;
@@ -69,6 +70,8 @@ public class Play extends BasicGameState {
         enemyManager = new EnemyManager(13, difficulty, map);
         enemyManager.addAllEnemies(map, player);
         turnManager = new TurnManager();
+        ItemManager.levelItems.clear();
+        ItemManager.ScatterItems(1, 5, map);
         FogManager.init(40, 40);
         player.currentPath = new Path();
         positionX = -player.posX*32+384;
@@ -129,13 +132,15 @@ public class Play extends BasicGameState {
                 int x, y;
                 x = (int)(player.lerpPosX + input.getMouseX()/32 - 11.5f);
                 y = (int)(player.lerpPosY + input.getMouseY()/32 - 8.375f);
-                boolean i = map.getTileSolid(x, y);
-                if(!i && input.getMouseY() < 542 && input.getMouseY() > 52 && FogManager.fog[x][y] != 2){
-                    player.currentPath = PathFinder.findPath(player.posX, player.posY, x, y, false);
-                    player.movementPhase = true;
-                }
-                if(Math.abs(x - player.posX) <= 1 && Math.abs(y - player.posY) <= 1){
-                    player.movementPhase = ItemManager.useItem(ItemManager.playerWeapon, x, y, enemyManager, player, turnManager);
+                if(x >= 0 && x < 40 && y >= 0 && y < 40){
+                    boolean i = map.getTileSolid(x, y);
+                    if(!i && input.getMouseY() < 542 && input.getMouseY() > 52 && FogManager.fog[x][y] != 2){
+                        player.currentPath = PathFinder.findPath(player.posX, player.posY, x, y, false);
+                        player.movementPhase = true;
+                    }
+                    if(Math.abs(x - player.posX) <= 1 && Math.abs(y - player.posY) <= 1){
+                        player.movementPhase = ItemManager.useItem(ItemManager.playerWeapon, x, y, enemyManager, player, turnManager);
+                    }
                 }
             }
             if(!player.movementPhase){

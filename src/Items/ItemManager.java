@@ -7,10 +7,14 @@ import Enemies.Enemy;
 import Enemies.EnemyManager;
 import GUI.GUI;
 import GUI.GUIStatPopup;
-import Items.Armour.Armour;
-import Items.Armour.Shirt;
+import Items.Armour.*;
+import Items.Potions.HealthPotion;
 import Items.Weapons.Dagger;
+import Items.Weapons.Longsword;
+import Items.Weapons.Sword;
 import Items.Weapons.Weapon;
+import TileSystem.Tile;
+import TileSystem.TileMap;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
 
@@ -50,7 +54,7 @@ public class ItemManager {
                     if(dodge < 8){
                         int damage = r.nextInt(Math.abs(playerWeapon.stats.Attack - e.stats.Defense/2)+1)+playerWeapon.stats.Attack/2;
                         e.stats.HP -= damage;
-                        GUI.addComponent(new GUIStatPopup(e.posX, e.posY-1,"-"+playerWeapon.stats.Attack, Color.orange), 1.5f);
+                        GUI.addComponent(new GUIStatPopup(e.posX, e.posY-1,"-"+damage, Color.orange), 1.5f);
                         AudioBank.playEffect(AudioBank.Hit1);
                     }else{
                         GUI.addComponent(new GUIStatPopup(e.posX, e.posY-1,"Dodge", Color.orange), 1.5f);
@@ -188,6 +192,38 @@ public class ItemManager {
         if(inventoryItems.size() == maxInventory)
             return true;
         return false;
+    }
+
+    public static void ScatterItems(int level, int numItems, TileMap map){
+        Random r = new Random(System.nanoTime());
+        switch(level){
+            case 1:
+                for(int i = 0; i < numItems; i++){
+                    while(true){
+                        int x = r.nextInt(40);
+                        int y = r.nextInt(40);
+                        if(!map.getTileSolid(x, y) && map.getTileType(x, y) != Tile.TileType.EMPTY && map.getTileType(x, y) != Tile.TileType.STONE_DOOR){
+                            float f = r.nextFloat();
+                            if(f < 0.3f)
+                                DropEnemyItem(new Dagger(0, 0, 4, 1, false), x, y);
+                            else if(f >= 0.3f && f < 0.5f)
+                                DropEnemyItem(new Sword(0, 0, 5, 1, false), x, y);
+                            else if(f >= 0.5f && f < 0.6f)
+                                DropEnemyItem(new Longsword(0, 0, 9, 2, false), x, y);
+                            else if(f >= 0.6f && f < 0.85f)
+                                DropEnemyItem(new HealthPotion(50, 0), x, y);
+                            else if(f >= 0.85f && f < 0.9f)
+                                DropEnemyItem(new LeatherArmour(0, 0, 3, 1, false), x, y);
+                            else if(f >= 0.9f && f < 0.95f)
+                                DropEnemyItem(new SteelArmour(0, 0, 5, 1, false), x, y);
+                            else if(f >= 0.95f && f < 1f)
+                                DropEnemyItem(new ScaleArmour(0, 0, 8, 1, false), x, y);
+                            break;
+                        }
+                    }
+                }
+                break;
+        }
     }
 
 }

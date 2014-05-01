@@ -7,21 +7,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="43026df8-6e1a-4247-88bc-b4fec99e6a92" name="Default" comment="">
-      <change type="DELETED" beforePath="C:\Users\Ollie\Desktop\LD-29\src\Core\Cell.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Ollie\Desktop\LD-29\src\Core\CellSystem.java" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Core/DungeonGenerator.java" afterPath="$PROJECT_DIR$/src/Core/DungeonGenerator.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Enemies/Enemy.java" afterPath="$PROJECT_DIR$/src/Enemies/Enemy.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Enemies/EnemyManager.java" afterPath="$PROJECT_DIR$/src/Enemies/EnemyManager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Core/FogManager.java" afterPath="$PROJECT_DIR$/src/Core/FogManager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GUI/GUI.java" afterPath="$PROJECT_DIR$/src/GUI/GUI.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/tex/Player.png" afterPath="$PROJECT_DIR$/res/tex/Player.png" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Items/ItemManager.java" afterPath="$PROJECT_DIR$/src/Items/ItemManager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Core/Menu.java" afterPath="$PROJECT_DIR$/src/Core/Menu.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/PathFinding/PathFinder.java" afterPath="$PROJECT_DIR$/src/PathFinding/PathFinder.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Core/Play.java" afterPath="$PROJECT_DIR$/src/Core/Play.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Core/Player.java" afterPath="$PROJECT_DIR$/src/Core/Player.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Enemies/Slime.java" afterPath="$PROJECT_DIR$/src/Enemies/Slime.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/TileSystem/Tile.java" afterPath="$PROJECT_DIR$/src/TileSystem/Tile.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/TileSystem/TileMap.java" afterPath="$PROJECT_DIR$/src/TileSystem/TileMap.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="LUDUMDARE.iws" />
@@ -98,7 +87,7 @@
       <file leaf-file-name="Play.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Core/Play.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="112" column="59" selection-start="3709" selection-end="3709" vertical-scroll-proportion="0.0" vertical-offset="1656" max-vertical-offset="3842">
+            <state line="132" column="74" selection-start="4370" selection-end="4370" vertical-scroll-proportion="0.0" vertical-offset="2167" max-vertical-offset="3927">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -106,10 +95,39 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="EnemyManager.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/Enemies/EnemyManager.java">
+      <file leaf-file-name="TileMap.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/TileSystem/TileMap.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="72" column="0" selection-start="2114" selection-end="2114" vertical-scroll-proportion="0.5375375" vertical-offset="926" max-vertical-offset="1479">
+            <state line="108" column="0" selection-start="5530" selection-end="5530" vertical-scroll-proportion="0.0" vertical-offset="1696" max-vertical-offset="2091">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ItemManager.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Items/ItemManager.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="57" column="61" selection-start="2033" selection-end="2033" vertical-scroll-proportion="0.0" vertical-offset="510" max-vertical-offset="3672">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Enemy.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Enemies/Enemy.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="190" column="34" selection-start="6422" selection-end="6422" vertical-scroll-proportion="0.24957556" vertical-offset="2828" max-vertical-offset="3536">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Player.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Core/Player.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="41" column="49" selection-start="1081" selection-end="1081" vertical-scroll-proportion="0.0" vertical-offset="414" max-vertical-offset="1513">
               <folding />
             </state>
           </provider>
@@ -118,7 +136,7 @@
       <file leaf-file-name="Slime.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Enemies/Slime.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="29" column="19" selection-start="746" selection-end="746" vertical-scroll-proportion="0.0" vertical-offset="102" max-vertical-offset="629">
+            <state line="31" column="23" selection-start="807" selection-end="807" vertical-scroll-proportion="0.0" vertical-offset="187" max-vertical-offset="629">
               <folding />
             </state>
           </provider>
@@ -181,13 +199,13 @@
         <option value="$PROJECT_DIR$/src/Core/FogManager.java" />
         <option value="$PROJECT_DIR$/src/Core/Menu.java" />
         <option value="$PROJECT_DIR$/src/GUI/GUI.java" />
-        <option value="$PROJECT_DIR$/src/Core/Player.java" />
         <option value="$PROJECT_DIR$/src/Enemies/Enemy.java" />
-        <option value="$PROJECT_DIR$/src/Core/DungeonGenerator.java" />
-        <option value="$PROJECT_DIR$/src/Items/ItemManager.java" />
-        <option value="$PROJECT_DIR$/src/Enemies/Slime.java" />
-        <option value="$PROJECT_DIR$/src/Core/Play.java" />
         <option value="$PROJECT_DIR$/src/Enemies/EnemyManager.java" />
+        <option value="$PROJECT_DIR$/src/Core/Player.java" />
+        <option value="$PROJECT_DIR$/src/Enemies/Slime.java" />
+        <option value="$PROJECT_DIR$/src/Core/DungeonGenerator.java" />
+        <option value="$PROJECT_DIR$/src/Core/Play.java" />
+        <option value="$PROJECT_DIR$/src/Items/ItemManager.java" />
       </list>
     </option>
   </component>
@@ -266,28 +284,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="TileSystem" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="LUDUMDARE" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="LD-29" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TileSystem" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Tiles" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -779,7 +775,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -788,7 +784,7 @@
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3284553" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.41626015" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.41626015" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3284553" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3284553" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -1110,36 +1106,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Enemies/Enemy.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="194" column="57" selection-start="6674" selection-end="6674" vertical-scroll-proportion="0.6456456" vertical-offset="2828" max-vertical-offset="3536">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Core/DungeonGenerator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="63" column="38" selection-start="1713" selection-end="1713" vertical-scroll-proportion="0.05105105" vertical-offset="1054" max-vertical-offset="2159">
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#genCorridor#0;class#DungeonGenerator#0" expanded="false" />
-            <element signature="method#genRoom#0;class#DungeonGenerator#0" expanded="false" />
-            <element signature="method#linkCorridor#0;class#DungeonGenerator#0" expanded="false" />
-            <element signature="method#isEmpty#0;class#DungeonGenerator#0" expanded="false" />
-            <element signature="method#findWall#0;class#DungeonGenerator#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/TileSystem/TileMap.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="108" column="0" selection-start="5530" selection-end="5530" vertical-scroll-proportion="5.3125" vertical-offset="102" max-vertical-offset="2091">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Core/Menu.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="75" column="64" selection-start="2677" selection-end="2677" vertical-scroll-proportion="0.2822823" vertical-offset="1096" max-vertical-offset="1853">
@@ -1161,20 +1127,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Core/Player.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="37" column="65" selection-start="910" selection-end="910" vertical-scroll-proportion="1.2552552" vertical-offset="109" max-vertical-offset="1394">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Items/ItemManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="33" column="0" selection-start="956" selection-end="956" vertical-scroll-proportion="0.34234235" vertical-offset="192" max-vertical-offset="3128">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Items/Weapons/Longsword.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="12" column="27" selection-start="314" selection-end="314" vertical-scroll-proportion="0.3873874" vertical-offset="58" max-vertical-offset="391">
@@ -1182,25 +1134,69 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Enemies/Slime.java">
+    <entry file="file://$PROJECT_DIR$/src/Core/Player.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="19" selection-start="746" selection-end="746" vertical-scroll-proportion="0.0" vertical-offset="102" max-vertical-offset="629">
+        <state line="41" column="49" selection-start="1081" selection-end="1081" vertical-scroll-proportion="0.0" vertical-offset="414" max-vertical-offset="1513">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Core/Play.java">
+    <entry file="file://$PROJECT_DIR$/src/Enemies/Slime.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="112" column="59" selection-start="3709" selection-end="3709" vertical-scroll-proportion="0.0" vertical-offset="1656" max-vertical-offset="3842">
+        <state line="31" column="23" selection-start="807" selection-end="807" vertical-scroll-proportion="0.0" vertical-offset="187" max-vertical-offset="629">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Core/DungeonGenerator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="55" column="26" selection-start="1576" selection-end="1576" vertical-scroll-proportion="0.5615616" vertical-offset="748" max-vertical-offset="2159">
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="method#genCorridor#0;class#DungeonGenerator#0" expanded="false" />
+            <element signature="method#genRoom#0;class#DungeonGenerator#0" expanded="false" />
+            <element signature="method#linkCorridor#0;class#DungeonGenerator#0" expanded="false" />
+            <element signature="method#isEmpty#0;class#DungeonGenerator#0" expanded="false" />
+            <element signature="method#findWall#0;class#DungeonGenerator#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Enemies/EnemyManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="72" column="0" selection-start="2114" selection-end="2114" vertical-scroll-proportion="0.5375375" vertical-offset="926" max-vertical-offset="1479">
+        <state line="70" column="9" selection-start="2107" selection-end="2107" vertical-scroll-proportion="0.43543544" vertical-offset="926" max-vertical-offset="1479">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/TileSystem/TileMap.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="108" column="0" selection-start="5530" selection-end="5530" vertical-scroll-proportion="0.0" vertical-offset="1696" max-vertical-offset="2091">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Core/Play.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="132" column="74" selection-start="4370" selection-end="4370" vertical-scroll-proportion="0.0" vertical-offset="2167" max-vertical-offset="3927">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Items/ItemManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="57" column="61" selection-start="2033" selection-end="2033" vertical-scroll-proportion="0.0" vertical-offset="510" max-vertical-offset="3672">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Enemies/Enemy.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="190" column="34" selection-start="6422" selection-end="6422" vertical-scroll-proportion="0.24957556" vertical-offset="2828" max-vertical-offset="3536">
           <folding />
         </state>
       </provider>
